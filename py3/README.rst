@@ -1,6 +1,6 @@
-=========
-bisos.icm
-=========
+============
+bisos.facter
+============
 
 .. contents::
    :depth: 3
@@ -9,8 +9,8 @@ bisos.icm
 Overview
 ========
 
-BASICS: Modules and facilities that can be used by ICMs and others and
-which do not import icm.
+bisos.facter: Adoption and adaptation of facter to Python and
+PyCS-Framework and BISOS for use with BISOS-CMDB.
 
 Support
 =======
@@ -33,11 +33,11 @@ Installation
 
 ::
 
-   sudo pip install bisos.aais
+   sudo pip install bisos.facter
 
 Usage
 =====
 
 ::
 
-   bin/aaisBpoManage.py
+   bin/facter.cs

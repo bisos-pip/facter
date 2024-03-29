@@ -50,14 +50,12 @@ csInfo['cmndParts'] = 'IcmCmndParts[common] IcmCmndParts[param]'
 """ #+begin_org
 * [[elisp:(org-cycle)][| ~Description~ |]] :: [[file:/bisos/git/auth/bxRepos/blee-binders/bisos-core/PyFwrk/bisos-pip/bisos.cs/_nodeBase_/fullUsagePanel-en.org][BISOS CmndSvcs Panel]]   [[elisp:(org-cycle)][| ]]
 
-This a =CmndSvc= for running CS examples individually or collectively.
-It can also be used as a regression tester.
-It works closely with the bisos.examples package.
+This a =CmndSvc= for running the equivalent of facter in py and remotely with rpyc.
+With BISOS, it is used in CMDB remotely.
 
 ** Status: In use with BISOS
 ** /[[elisp:(org-cycle)][| Planned Improvements |]]/ :
-*** TODO pyRoInv examples module should be merged with pyInv and cmnds module.
-*** TODO Create an examples panel to which this points.
+*** TODO Convert all ICMs to CSs
 #+end_org """
 
 ####+BEGIN: b:prog:file/orgTopControls :outLevel 1
@@ -169,15 +167,14 @@ class examples(cs.Cmnd):
 
         cs.examples.myName(cs.G.icmMyName(), cs.G.icmMyFullName())
         cs.examples.commonBrief()
-        bleep.examples_icmBasic()
-
 
         if cs.ro.csMuIsPerformer() is True:
-            facter_csu.roPerf_examples_csu(sectionTitle="default")
+            facter_csu.roPerf_examples_csu().pyCmnd(sectionTitle="default")
         elif cs.ro.csMuIsInvoker() is True:
-            facter_csu.roInv_examples_csu(sectionTitle="default")
-        elif cs.ro.csMuIsCommand() is True:
-            facter_csu.facter_examples().pyWCmnd(cmndOutcome,)
+            facter_csu.roInv_examples_csu().pyCmnd(sectionTitle="default")
+        elif cs.ro.csMuIsDirect() is True:
+            bleep.examples_icmBasic()
+            facter_csu.examples_csu().pyCmnd()
         else:
             oops()
 
