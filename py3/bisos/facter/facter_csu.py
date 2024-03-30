@@ -109,16 +109,38 @@ g_rosmu = cs.G.icmMyName()
 
 cs.invOutcomeReportControl(cmnd=True, ro=True)
 
-####+BEGIN: bx:dblock:python:func :funcName "commonParamsSpecify" :funcType "ParSpec" :retType "" :deco "" :argsList "csParams"
+####+BEGIN: b:py3:cs:orgItem/section :title "Common Parameters Specification" :comment "based on cs.param.CmndParamDict -- As expected from CSU-s"
 """ #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-ParSpec  [[elisp:(outline-show-subtree+toggle)][||]] /commonParamsSpecify/ retType= argsList=(csParams)  [[elisp:(org-cycle)][| ]]
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  /Section/    [[elisp:(outline-show-subtree+toggle)][||]] *Common Parameters Specification* based on cs.param.CmndParamDict -- As expected from CSU-s  [[elisp:(org-cycle)][| ]]
+#+end_org """
+####+END:
+
+####+BEGIN: b:py3:cs:func/typing :funcName "commonParamsSpecify" :comment "~CSU Specification~" :funcType "ParSpc" :deco ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-ParSpc [[elisp:(outline-show-subtree+toggle)][||]] /commonParamsSpecify/  ~CSU Specification~  [[elisp:(org-cycle)][| ]]
 #+end_org """
 def commonParamsSpecify(
-    csParams,
-):
 ####+END:
-    pass
-
+        csParams: cs.param.CmndParamDict,
+) -> None:
+    csParams.parDictAdd(
+        parName='cache',
+        parDescription="When Cache is false, cache is not used and is refreshed.",
+        parDataType=None,
+        parDefault='True',
+        parChoices=['True', 'False'],
+        argparseShortOpt=None,
+        argparseLongOpt='--cache',
+    )
+    csParams.parDictAdd(
+        parName='fromFile',
+        parDescription="File from which Facts will be retrived.",
+        parDataType=None,
+        parDefault=None,
+        parChoices=[],
+        argparseShortOpt=None,
+        argparseLongOpt='--fromFile',
+    )
 
 ####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep nil :title "Direct Command Services" :anchor ""  :extraInfo "Examples and CSs"
 """ #+begin_org
@@ -152,13 +174,20 @@ class examples_csu(cs.Cmnd):
 ** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Basic example command.
         #+end_org """)
 
-        # examples_csu(sectionTitle="default")
-
-        # od = collections.OrderedDict
-        # cmnd = cs.examples.cmndEnter
+        od = collections.OrderedDict
+        cmnd = cs.examples.cmndEnter
         literal = cs.examples.execInsert
 
         roCmnd_examples().pyCmnd(sectionTitle="default")
+
+        cs.examples.menuChapter('=Direct Interface Commands=')
+
+        perfNamePars = od([('perfName', "HSS-1012"),])
+        cmnd('cmdbSummary', comment=" # Summarize for cmdb")
+        cmnd('cmdbSummary', pars=perfNamePars, comment=" # remote obtain facter data, use it to summarize for cmdb")
+
+        fromFilePars= od([('fromFile', "filePath"), ('cache', 'True')])
+        cmnd('factName', pars=fromFilePars, args='''networking.primary''')
 
         cs.examples.menuChapter('=Raw facter Examples=')
 
@@ -169,37 +198,73 @@ class examples_csu(cs.Cmnd):
 
         return(cmndOutcome)
 
-####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "factName" :comment "" :extent "verify" :ro "cli" :parsMand "" :parsOpt "" :argsMin 1 :argsMax 1 :pyInv ""
+####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "facterJsonOutputBytes" :comment "" :extent "verify" :ro "cli" :parsMand "" :parsOpt "" :argsMin 0 :argsMax 0 :pyInv ""
 """ #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<factName>>  =verify= argsMin=1 argsMax=1 ro=cli   [[elisp:(org-cycle)][| ]]
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<facterJsonOutputBytes>>  =verify= ro=cli   [[elisp:(org-cycle)][| ]]
+#+end_org """
+class facterJsonOutputBytes(cs.Cmnd):
+    cmndParamsMandatory = [ ]
+    cmndParamsOptional = [ ]
+    cmndArgsLen = {'Min': 0, 'Max': 0,}
+
+    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
+    def cmnd(self,
+             rtInv: cs.RtInvoker,
+             cmndOutcome: b.op.Outcome,
+    ) -> b.op.Outcome:
+
+        failed = b_io.eh.badOutcome
+        callParamsDict = {}
+        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, None).isProblematic():
+            return failed(cmndOutcome)
+####+END:
+        self.cmndDocStr(f""" #+begin_org
+** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Returns runFacterAndGetJsonOutputBytes.
+        #+end_org """)
+
+        result = facter._runFacterAndGetJsonOutputBytes()
+
+        return cmndOutcome.set(opResults=result,)
+
+
+
+####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "factName" :comment "" :extent "verify" :ro "cli" :parsMand "" :parsOpt "cache fromFile perfName" :argsMin 1 :argsMax 1 :pyInv "fromData"
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<factName>>  =verify= parsOpt=cache fromFile perfName argsMin=1 argsMax=1 ro=cli pyInv=fromData   [[elisp:(org-cycle)][| ]]
 #+end_org """
 class factName(cs.Cmnd):
     cmndParamsMandatory = [ ]
-    cmndParamsOptional = [ ]
+    cmndParamsOptional = [ 'cache', 'fromFile', 'perfName', ]
     cmndArgsLen = {'Min': 1, 'Max': 1,}
 
     @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
     def cmnd(self,
              rtInv: cs.RtInvoker,
              cmndOutcome: b.op.Outcome,
+             cache: typing.Optional[str]=None,  # Cs Optional Param
+             fromFile: typing.Optional[str]=None,  # Cs Optional Param
+             perfName: typing.Optional[str]=None,  # Cs Optional Param
              argsList: typing.Optional[list[str]]=None,  # CsArgs
+             fromData: typing.Any=None,   # pyInv Argument
     ) -> b.op.Outcome:
 
         failed = b_io.eh.badOutcome
-        callParamsDict = {}
+        callParamsDict = {'cache': cache, 'fromFile': fromFile, 'perfName': perfName, }
         if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, argsList).isProblematic():
             return failed(cmndOutcome)
         cmndArgsSpecDict = self.cmndArgsSpec()
+        cache = csParam.mappedValue('cache', cache)
+        fromFile = csParam.mappedValue('fromFile', fromFile)
+        perfName = csParam.mappedValue('perfName', perfName)
 ####+END:
         self.cmndDocStr(f""" #+begin_org
 ** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Returns factValue for specified factName.
+*** TODO Makes good sense to -h (for human) in which case we would do | pyLiteralToBash.cs -i stdinToBlack right here.
+SCHEDULED: <2024-03-28 Thu>
         #+end_org """)
 
         factName = self.cmndArgsGet("0", cmndArgsSpecDict, argsList)
-
-        factValue = facter.get(factName)
-
-        # print(factValue)
+        factValue = facter.get(factName, cache=cache, fromFile=fromFile, fromData=fromData)
 
         return cmndOutcome.set(opResults=factValue,)
 
@@ -221,10 +286,108 @@ class factName(cs.Cmnd):
             argName="factName",
             argDefault='',
             argChoices=[],
-            argDescription="One Argument , any string for a factName"
+            argDescription="One argument, any string for a factName"
         )
 
         return cmndArgsSpecDict
+
+
+####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "cmdbSummary" :comment "" :extent "verify" :ro "noCli" :parsMand "" :parsOpt "perfName" :argsMin 0 :argsMax 0 :pyInv ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<cmdbSummary>>  =verify= parsOpt=perfName ro=noCli   [[elisp:(org-cycle)][| ]]
+#+end_org """
+class cmdbSummary(cs.Cmnd):
+    cmndParamsMandatory = [ ]
+    cmndParamsOptional = [ 'perfName', ]
+    cmndArgsLen = {'Min': 0, 'Max': 0,}
+    rtInvConstraints = cs.rtInvoker.RtInvoker.new_noRo() # NO RO From CLI
+
+    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
+    def cmnd(self,
+             rtInv: cs.RtInvoker,
+             cmndOutcome: b.op.Outcome,
+             perfName: typing.Optional[str]=None,  # Cs Optional Param
+    ) -> b.op.Outcome:
+
+        failed = b_io.eh.badOutcome
+        callParamsDict = {'perfName': perfName, }
+        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, None).isProblematic():
+            return failed(cmndOutcome)
+        perfName = csParam.mappedValue('perfName', perfName)
+####+END:
+        self.cmndDocStr(f""" #+begin_org
+** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Remote invoke all facts. Store here. then process remote.
+        #+end_org """)
+
+        if perfName is None:
+            if (fromData := facterJsonOutputBytes().pyWCmnd(
+                    cmndOutcome,
+            ).results) is None : return failed(cmndOutcome)
+        else:
+            if (fromData := facterJsonOutputBytes().pyRoWCmnd(
+                    cmndOutcome,
+                    rosmu=cs.ro.csMuInvokerName(),
+                    perfName=perfName,
+                    svcName=g_svcName,
+            ).results) is None : return failed(cmndOutcome)
+
+        if (osFamily := factName().pyWCmnd(
+                cmndOutcome,
+                fromData=fromData,
+                cache='True',
+                argsList=["os.family"],
+        ).results) is None : return failed(cmndOutcome)
+
+        return cmndOutcome.set(opResults=osFamily,)
+
+
+####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "cmdbSummaryLoc" :comment "" :extent "verify" :ro "noCli" :parsMand "" :parsOpt "perfName" :argsMin 0 :argsMax 0 :pyInv ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<cmdbSummaryLoc>>  =verify= parsOpt=perfName ro=noCli   [[elisp:(org-cycle)][| ]]
+#+end_org """
+class cmdbSummaryLoc(cs.Cmnd):
+    cmndParamsMandatory = [ ]
+    cmndParamsOptional = [ 'perfName', ]
+    cmndArgsLen = {'Min': 0, 'Max': 0,}
+    rtInvConstraints = cs.rtInvoker.RtInvoker.new_noRo() # NO RO From CLI
+
+    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
+    def cmnd(self,
+             rtInv: cs.RtInvoker,
+             cmndOutcome: b.op.Outcome,
+             perfName: typing.Optional[str]=None,  # Cs Optional Param
+    ) -> b.op.Outcome:
+
+        failed = b_io.eh.badOutcome
+        callParamsDict = {'perfName': perfName, }
+        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, None).isProblematic():
+            return failed(cmndOutcome)
+        perfName = csParam.mappedValue('perfName', perfName)
+####+END:
+        self.cmndDocStr(f""" #+begin_org
+** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Remote invoke all facts. Store here. then process remote.
+        #+end_org """)
+
+        if (fromNetData := factName().pyWCmnd(
+                cmndOutcome,
+                argsList=[""],
+        ).results) is None : return failed(cmndOutcome)
+
+        # import copy
+        fromData = fromNetData
+
+        # fromDataStr = repr(fromRoData)
+        # fromData = eval(fromDataStr)
+
+        if (osFamily := factName().pyWCmnd(
+                cmndOutcome,
+                fromData=fromData,
+                cache='True',
+                argsList=["os.family"],
+        ).results) is None : return failed(cmndOutcome)
+
+        return cmndOutcome.set(opResults=osFamily,)
+
 
 
 ####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep nil :title "RoPerf Examples and SapCreation" :anchor ""  :extraInfo "Command Services"
@@ -407,15 +570,24 @@ class roCmnd_examples(cs.Cmnd):
 
         od = collections.OrderedDict
         cmnd = cs.examples.cmndEnter
+        literal = cs.examples.execInsert
 
         if perfName is None:
             perfNamePars = od([])
+            perfNameParsPlus = od([('cache', 'False')])
         else:
             perfNamePars = od([('perfName', perfName),])
+            perfNameParsPlus = od([('perfName', perfName), ('cache', 'False')])
 
         if sectionTitle == 'default': cs.examples.menuChapter('*Fact Name Examples*')
 
-        cmnd('factName', pars=perfNamePars, args="""networking""")
+        literal("facter.cs networking.interfaces.lo.bindings[0].address")
+
+        cmnd('facterJsonOutputBytes', pars=perfNamePars,  comment=" # Run Facter and get Json Output")
+        cmnd('factName', pars=perfNamePars, args='''""''', comment=" # empty string means everything")
+        cmnd('factName', pars=perfNamePars, args='''""''', comment="| pyLiteralToBash.cs -i stdinToBlack")
+        cmnd('factName', pars=perfNameParsPlus, args="""networking""")
+        cmnd('factName', pars=perfNamePars, args="""networking""", comment="| pyLiteralToBash.cs -i stdinToBlack")
         cmnd('factName', pars=perfNamePars, args="""networking.primary""")
         cmnd('factName', pars=perfNamePars, args="""networking.interfaces.lo.bindings""")
         cmnd('factName', pars=perfNamePars, args="""networking.interfaces.lo.bindings[0].address""")

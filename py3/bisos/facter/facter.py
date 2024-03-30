@@ -1,110 +1,107 @@
+
+####+BEGIN: b:py3:cs:orgItem/basic :type "=Executes=  "  :title "CSU-Lib Executions" :comment "-- cs.invOutcomeReportControl"
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  =Executes=   [[elisp:(outline-show-subtree+toggle)][||]] CSU-Lib Executions -- cs.invOutcomeReportControl  [[elisp:(org-cycle)][| ]]
+#+end_org """
+####+END:
 # -*- coding: utf-8 -*-
-"""\
-* *[Summary]* :: A /library/ Beginning point for development of new ICM oriented libraries.
-"""
 
+""" #+begin_org
+* ~[Summary]~ :: A =CmndSvc= for
+#+end_org """
+
+####+BEGIN: b:py3:cs:file/dblockControls :classification "cs-u"
+""" #+begin_org
+* [[elisp:(org-cycle)][| /Control Parameters Of This File/ |]] :: dblk ctrls classifications=cs-u
+#+BEGIN_SRC emacs-lisp
+(setq-local b:dblockControls t) ; (setq-local b:dblockControls nil)
+(put 'b:dblockControls 'py3:cs:Classification "cs-u") ; one of cs-mu, cs-u, cs-lib, bpf-lib, pyLibPure
+#+END_SRC
+#+RESULTS:
+: cs-u
+#+end_org """
+####+END:
+
+####+BEGIN: b:prog:file/proclamations :outLevel 1
+""" #+begin_org
+* *[[elisp:(org-cycle)][| Proclamations |]]* :: Libre-Halaal Software --- Part Of BISOS ---  Poly-COMEEGA Format.
+** This is Libre-Halaal Software. © Neda Communications, Inc. Subject to AGPL.
+** It is part of BISOS (ByStar Internet Services OS)
+** Best read and edited  with Blee in Poly-COMEEGA (Polymode Colaborative Org-Mode Enhance Emacs Generalized Authorship)
+#+end_org """
+####+END:
+
+####+BEGIN: b:prog:file/particulars :authors ("./inserts/authors-mb.org")
+""" #+begin_org
+* *[[elisp:(org-cycle)][| Particulars |]]* :: Authors, version
+** This File: /bisos/git/auth/bxRepos/bisos-pip/facter/py3/bisos/facter/facter.py
+** Authors: Mohsen BANAN, http://mohsen.banan.1.byname.net/contact
+#+end_org """
+####+END:
+
+####+BEGIN: b:py3:file/particulars-csInfo :status "inUse"
+""" #+begin_org
+* *[[elisp:(org-cycle)][| Particulars-csInfo |]]*
+#+end_org """
 import typing
+csInfo: typing.Dict[str, typing.Any] = { 'moduleName': ['facter'], }
+csInfo['version'] = '202403280914'
+csInfo['status']  = 'inUse'
+csInfo['panel'] = 'facter-Panel.org'
+csInfo['groupingType'] = 'IcmGroupingType-pkged'
+csInfo['cmndParts'] = 'IcmCmndParts[common] IcmCmndParts[param]'
+####+END:
 
-icmInfo: typing.Dict[str, typing.Any] = { 'moduleDescription': ["""
-*       [[elisp:(org-show-subtree)][|=]]  [[elisp:(org-cycle)][| *Description:* | ]]
-**  [[elisp:(org-cycle)][| ]]  [Xref]          :: *[Related/Xrefs:]*  <<Xref-Here->>  -- External Documents  [[elisp:(org-cycle)][| ]]
-
-**  [[elisp:(org-cycle)][| ]]   Model and Terminology                                      :Overview:
-*** concept             -- Desctiption of concept
+""" #+begin_org
+* [[elisp:(org-cycle)][| ~Description~ |]] :: [[file:/bisos/git/auth/bxRepos/blee-binders/bisos-core/COMEEGA/_nodeBase_/fullUsagePanel-en.org][BISOS COMEEGA Panel]]
 Inspired by: # https://github.com/knorby/facterpy
-**      [End-Of-Description]
-"""], }
+** Relevant Panels:
+** Status: In use with BISOS
+** /[[elisp:(org-cycle)][| Planned Improvements |]]/ :
+*** TODO It would be cleaner to put all these functions in a class.
+#+end_org """
 
-icmInfo['moduleUsage'] = """
-*       [[elisp:(org-show-subtree)][|=]]  [[elisp:(org-cycle)][| *Usage:* | ]]
-
-**      How-Tos:
-See bisos.examples
-**      [End-Of-Usage]
-"""
-
-icmInfo['moduleStatus'] = """
-*       [[elisp:(org-show-subtree)][|=]]  [[elisp:(org-cycle)][| *Status:* | ]]
-**  [[elisp:(org-cycle)][| ]]  [Info]          :: *[Current-Info:]* Status/Maintenance -- General TODO List [[elisp:(org-cycle)][| ]]
-** TODO [[elisp:(org-cycle)][| ]]  Current     :: For now it is an ICM. Turn it into ICM-Lib. [[elisp:(org-cycle)][| ]]
-**      [End-Of-Status]
-"""
-
-"""
-*  [[elisp:(org-cycle)][| *ICM-INFO:* |]] :: Author, Copyleft and Version Information
-"""
-####+BEGIN: bx:icm:py:name :style "fileName"
-icmInfo['moduleName'] = "pattern"
-####+END:
-
-####+BEGIN: bx:icm:py:version-timestamp :style "date"
-icmInfo['version'] = "202110191256"
-####+END:
-
-####+BEGIN: bx:icm:py:status :status "Production"
-icmInfo['status']  = "Production"
-####+END:
-
-icmInfo['credits'] = ""
-
-####+BEGIN: bx:dblock:global:file-insert-cond :cond "./blee.el" :file "/bisos/apps/defaults/update/sw/icm/py/icmInfo-mbNedaGplByStar.py"
-icmInfo['authors'] = "[[http://mohsen.1.banan.byname.net][Mohsen Banan]]"
-icmInfo['copyright'] = "Copyright 2017, [[http://www.neda.com][Neda Communications, Inc.]]"
-icmInfo['licenses'] = "[[https://www.gnu.org/licenses/agpl-3.0.en.html][Affero GPL]]", "Libre-Halaal Services License", "Neda Commercial License"
-icmInfo['maintainers'] = "[[http://mohsen.1.banan.byname.net][Mohsen Banan]]"
-icmInfo['contacts'] = "[[http://mohsen.1.banan.byname.net/contact]]"
-icmInfo['partOf'] = "[[http://www.by-star.net][Libre-Halaal ByStar Digital Ecosystem]]"
-####+END:
-
-icmInfo['panel'] = "{}-Panel.org".format(icmInfo['moduleName'])
-icmInfo['groupingType'] = "IcmGroupingType-pkged"
-icmInfo['cmndParts'] = "IcmCmndParts[common] IcmCmndParts[param]"
-
-
-####+BEGIN: bx:icm:python:top-of-file :partof "bystar" :copyleft "halaal+minimal"
-"""
-*  This file:/bisos/git/auth/bxRepos/bisos-pip/basics/py3/bisos/basics/pattern.py :: [[elisp:(org-cycle)][| ]]
- is part of The Libre-Halaal ByStar Digital Ecosystem. http://www.by-star.net
- *CopyLeft*  This Software is a Libre-Halaal Poly-Existential. See http://www.freeprotocols.org
- A Python Interactively Command Module (PyICM).
- Best Developed With COMEEGA-Emacs And Best Used With Blee-ICM-Players.
- *WARNING*: All edits wityhin Dynamic Blocks may be lost.
-"""
-####+END:
-
-####+BEGIN: bx:icm:python:topControls :partof "bystar" :copyleft "halaal+minimal"
-"""
-*  [[elisp:(org-cycle)][|/Controls/| ]] :: [[elisp:(org-show-subtree)][|=]]  [[elisp:(show-all)][Show-All]]  [[elisp:(org-shifttab)][Overview]]  [[elisp:(progn (org-shifttab) (org-content))][Content]] | [[file:Panel.org][Panel]] | [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] | [[elisp:(bx:org:run-me)][Run]] | [[elisp:(bx:org:run-me-eml)][RunEml]] | [[elisp:(delete-other-windows)][(1)]] | [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]]  [[elisp:(save-buffer)][Save]]  [[elisp:(kill-buffer)][Quit]] [[elisp:(org-cycle)][| ]]
+####+BEGIN: b:prog:file/orgTopControls :outLevel 1
+""" #+begin_org
+* [[elisp:(org-cycle)][| Controls |]] :: [[elisp:(delete-other-windows)][(1)]] | [[elisp:(show-all)][Show-All]]  [[elisp:(org-shifttab)][Overview]]  [[elisp:(progn (org-shifttab) (org-content))][Content]] | [[file:Panel.org][Panel]] | [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] | [[elisp:(bx:org:run-me)][Run]] | [[elisp:(bx:org:run-me-eml)][RunEml]] | [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]]  [[elisp:(save-buffer)][Save]]  [[elisp:(kill-buffer)][Quit]] [[elisp:(org-cycle)][| ]]
 ** /Version Control/ ::  [[elisp:(call-interactively (quote cvs-update))][cvs-update]]  [[elisp:(vc-update)][vc-update]] | [[elisp:(bx:org:agenda:this-file-otherWin)][Agenda-List]]  [[elisp:(bx:org:todo:this-file-otherWin)][ToDo-List]]
-"""
-####+END:
-####+BEGIN: bx:dblock:global:file-insert-cond :cond "./blee.el" :file "/bisos/apps/defaults/software/plusOrg/dblock/inserts/pyWorkBench.org"
-"""
-*  /Python Workbench/ ::  [[elisp:(org-cycle)][| ]]  [[elisp:(python-check (format "/bisos/venv/py3/bisos3/bin/python -m pyclbr %s" (bx:buf-fname))))][pyclbr]] || [[elisp:(python-check (format "/bisos/venv/py3/bisos3/bin/python -m pydoc ./%s" (bx:buf-fname))))][pydoc]] || [[elisp:(python-check (format "/bisos/pipx/bin/pyflakes %s" (bx:buf-fname)))][pyflakes]] | [[elisp:(python-check (format "/bisos/pipx/bin/pychecker %s" (bx:buf-fname))))][pychecker (executes)]] | [[elisp:(python-check (format "/bisos/pipx/bin/pycodestyle %s" (bx:buf-fname))))][pycodestyle]] | [[elisp:(python-check (format "/bisos/pipx/bin/flake8 %s" (bx:buf-fname))))][flake8]] | [[elisp:(python-check (format "/bisos/pipx/bin/pylint %s" (bx:buf-fname))))][pylint]]  [[elisp:(org-cycle)][| ]]
-"""
+
+#+end_org """
 ####+END:
 
-####+BEGIN: bx:icm:python:icmItem :itemType "=Imports=" :itemTitle "*IMPORTS*"
-"""
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  =Imports=  :: *IMPORTS*  [[elisp:(org-cycle)][| ]]
-"""
+####+BEGIN: b:py3:file/workbench :outLevel 1
+""" #+begin_org
+* [[elisp:(org-cycle)][| Workbench |]] :: [[elisp:(python-check (format "/bisos/venv/py3/bisos3/bin/python -m pyclbr %s" (bx:buf-fname))))][pyclbr]] || [[elisp:(python-check (format "/bisos/venv/py3/bisos3/bin/python -m pydoc ./%s" (bx:buf-fname))))][pydoc]] || [[elisp:(python-check (format "/bisos/pipx/bin/pyflakes %s" (bx:buf-fname)))][pyflakes]] | [[elisp:(python-check (format "/bisos/pipx/bin/pychecker %s" (bx:buf-fname))))][pychecker (executes)]] | [[elisp:(python-check (format "/bisos/pipx/bin/pycodestyle %s" (bx:buf-fname))))][pycodestyle]] | [[elisp:(python-check (format "/bisos/pipx/bin/flake8 %s" (bx:buf-fname))))][flake8]] | [[elisp:(python-check (format "/bisos/pipx/bin/pylint %s" (bx:buf-fname))))][pylint]]  [[elisp:(org-cycle)][| ]]
+#+end_org """
 ####+END:
 
-import json
-import subprocess
-
-import collections
+####+BEGIN: b:py3:cs:orgItem/basic :type "=PyImports= "  :title "*Py Library IMPORTS*" :comment "-- Framework and External Packages Imports"
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  =PyImports=  [[elisp:(outline-show-subtree+toggle)][||]] *Py Library IMPORTS* -- Framework and External Packages Imports  [[elisp:(org-cycle)][| ]]
+#+end_org """
+####+END:
 
 ####+BEGIN: b:py3:cs:framework/imports :basedOn "classification"
 """ #+begin_org
 ** Imports Based On Classification=cs-u
 #+end_org """
 from bisos import b
-from bisos.b import cs, parsGetAsDictValue
+from bisos.b import cs
 from bisos.b import b_io
 from bisos.common import csParam
 
 import collections
+####+END:
+
+import json
+import subprocess
+import pathlib
+import sys
+
+####+BEGIN: b:py3:cs:orgItem/basic :type "=Executes=  "  :title "CSU-Lib Executions" :comment "-- "
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  =Executes=   [[elisp:(outline-show-subtree+toggle)][||]] CSU-Lib Executions --   [[elisp:(org-cycle)][| ]]
+#+end_org """
 ####+END:
 
 _facterCacheEnabled = True
@@ -112,10 +109,18 @@ _facterCacheEnabled = True
 _facterCurCache = None
 
 
-####+BEGIN: b:py3:cs:func/typing :funcName "_runFacterAndGetJsonOutputBytes" :funcType "eType" :retType "" :deco "default" :argsList ""
-"""
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  Func-      :: /_runFacterAndGetJsonOutputBytes/ =Instantiate specified class just once based on args.=  [[elisp:(org-cycle)][| ]]
-"""
+####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep nil :title "Functions" :anchor ""  :extraInfo ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*     [[elisp:(outline-show-subtree+toggle)][| _Functions_: |]]    [[elisp:(org-shifttab)][<)]] E|
+#+end_org """
+####+END:
+
+
+####+BEGIN: b:py3:cs:func/typing :funcName "_runFacterAndGetJsonOutputBytes" :comment "=subproc facter --json=" :funcType "eType" :retType "" :deco "default" :argsList ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-eType  [[elisp:(outline-show-subtree+toggle)][||]] /_runFacterAndGetJsonOutputBytes/  =subproc facter --json= deco=default  [[elisp:(org-cycle)][| ]]
+#+end_org """
+@cs.track(fnLoc=True, fnEntry=True, fnExit=True)
 def _runFacterAndGetJsonOutputBytes(
 ####+END:
 ):
@@ -139,21 +144,37 @@ def _dictToNamedTuple(
 ** Convert _inDict_ to  named tupples. Used as _json.loads(object_hook=dictToNamedTuple)_
     Called for each dictionary.
     """
-    return collections.namedtuple('Facts', inDict.keys(), rename=True)(*inDict.values())
+    Facts = collections.namedtuple('Facts', inDict.keys(), rename=True)(*inDict.values())
+    return Facts
 
 
-####+BEGIN: b:py3:cs:func/typing :funcName "_runFacterAndGetAllNamedTuple" :funcType "eType" :retType "" :deco "default" :argsList ""
+
+####+BEGIN: b:py3:cs:func/typing :funcName "_runFacterAndGetAllNamedTupleFromJsonOutput" :funcType "eType" :retType "" :deco "default" :argsList ""
 """ #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-eType  [[elisp:(outline-show-subtree+toggle)][||]] /_runFacterAndGetAllNamedTuple/  deco=default  [[elisp:(org-cycle)][| ]]
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-eType  [[elisp:(outline-show-subtree+toggle)][||]] /_runFacterAndGetAllNamedTupleFromJsonOutput/  deco=default  [[elisp:(org-cycle)][| ]]
 #+end_org """
 @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
-def _runFacterAndGetAllNamedTuple(
+def _runFacterAndGetAllNamedTupleFromJsonOutput(
 ####+END:
+        fromFile=None,
+        fromData=None,
 ):
     """
-** Get facter as json and convert it to named tuples
+** With jsonOutputBytes, invoke json.loads  and return results.
     """
-    jsonOutputBytes = _runFacterAndGetJsonOutputBytes()
+
+    if fromFile is not None:
+        path = pathlib.Path(fromFile)
+        if path.is_file():
+            jsonOutputBytes = path.read_text()
+        else:
+            b_io.eh.critical_usageError(f"Missing fromFile={fromFile}")
+            sys.exit()
+    elif fromData is not None:
+        jsonOutputBytes = fromData
+    else:
+        jsonOutputBytes = _runFacterAndGetJsonOutputBytes()
+
     result = None
     try:
         result = json.loads(
@@ -161,9 +182,11 @@ def _runFacterAndGetAllNamedTuple(
             object_hook=_dictToNamedTuple,
         )
     except json.JSONDecodeError:
-        icm.EH_critical_exception("json.JSONDecodeError")
+        b_io.eh.critical_exception("json.JSONDecodeError")
 
     return result
+
+
 
 ####+BEGIN: b:py3:cs:func/typing :funcName "getAllAsNamedTuple" :funcType "eType" :retType "" :deco "default" :argsList ""
 """ #+begin_org
@@ -173,46 +196,56 @@ def _runFacterAndGetAllNamedTuple(
 def getAllAsNamedTuple(
 ####+END:
         cache=True,
+        fromFile=None,
+        fromData=None,
 ):
     """
-** Get facter as json and convert it to named tuples
+** Subject to caching controls,  _runFacterAndGetAllNamedTuple
     """
     global _facterCurCache
     global _facterCacheEnabled
 
     if not _facterCacheEnabled:
-        _facterCurCache = _runFacterAndGetAllNamedTuple()
+        _facterCurCache = _runFacterAndGetAllNamedTupleFromJsonOutput(fromFile=fromFile, fromData=fromData)
     elif not _facterCurCache:
-        _facterCurCache = _runFacterAndGetAllNamedTuple()
+        _facterCurCache = _runFacterAndGetAllNamedTupleFromJsonOutput(fromFile=fromFile, fromData=fromData)
     elif not cache:
-        _facterCurCache = _runFacterAndGetAllNamedTuple()
+        _facterCurCache = _runFacterAndGetAllNamedTupleFromJsonOutput(fromFile=fromFile, fromData=fromData)
     else:
         pass
 
     return _facterCurCache
 
-####+BEGIN: b:py3:cs:func/typing :funcName "get" :funcType "eType" :retType "" :deco "default" :argsList ""
+####+BEGIN: b:py3:cs:func/typing :funcName "get" :comment "~Primary Entry~ " :funcType "eType" :retType "" :deco "default" :argsList ""
 """ #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-eType  [[elisp:(outline-show-subtree+toggle)][||]] /get/  deco=default  [[elisp:(org-cycle)][| ]]
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-eType  [[elisp:(outline-show-subtree+toggle)][||]] /get/  ~Primary Entry~  deco=default  [[elisp:(org-cycle)][| ]]
 #+end_org """
 @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
 def get(
 ####+END:
         factName,
         cache=True,
+        fromFile=None,
+        fromData=None,
 ):
     """
-** Get facter as json and convert it to named tuples
+** Get facts and eval facts.factName. return factValue.
     """
-    facts = getAllAsNamedTuple(cache=cache)
+
+    facts = getAllAsNamedTuple(cache=cache, fromFile=fromFile, fromData=fromData)
+
+    if factName:
+        subjectFactStr = f"facts.{factName}"
+    else:
+        subjectFactStr = "facts"
 
     try:
-        factValue = eval(f"facts.{factName}")
+        factValue = eval(subjectFactStr)
     except AttributeError as e:
-        icm.EH_critical_usageError(f"AttributeError -- Invalid factName={factName}")
+        b_io.eh.critical_usageError(f"AttributeError -- Invalid factName={factName}")
         factValue = None
     except IndexError as e:
-        icm.EH_critical_usageError(f"IndexError -- Invalid factName={factName}")
+        b_io.eh.critical_usageError(f"IndexError -- Invalid factName={factName}")
         factValue = None
 
     return factValue
@@ -228,7 +261,7 @@ def _getWithGetattrUnused(
         cache=True,
 ):
     """
-** Get facter as json and convert it to named tuples
+** Instead of eval, use getattr -- unused for now. Revisit later.
     """
     facts = getAllAsNamedTuple(cache=cache)
 
@@ -256,7 +289,7 @@ def getOrDefault(
         cache=True,
 ):
     """
-** Get facter as json and convert it to named tuples
+** When exceptioned, return default.
     """
     facts = getAllAsNamedTuple(cache=cache)
 
@@ -277,7 +310,7 @@ def cacheAvailabilityToggle(
         enable=True,
 ):
     """
-** Get facter as json and convert it to named tuples
+** Toggle Cache Availability.
     """
     global _facterCacheEnabled
     if enable:
@@ -295,7 +328,7 @@ def cacheAvailabilityObtain(
         enable=True,
 ):
     """
-** Get facter as json and convert it to named tuples
+** Obtain caching status.
     """
     global _facterCacheEnabled
     return _facterCacheEnabled
@@ -314,12 +347,15 @@ def _getNamedTupleOneLiner_unused(
     y = json.loads(subprocess.check_output(['facter', '--json']), object_hook=lambda d: collections.namedtuple('Factset', d.keys(), rename=True)(*d.values()))
     return y
 
-####+BEGIN: bx:icm:python:section :title "End Of Editable Text"
-"""
-*  [[elisp:(beginning-of-buffer)][Top]] ############## [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(delete-other-windows)][(1)]]    *End Of Editable Text*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]]
-"""
-####+END:
 
-####+BEGIN: bx:dblock:global:file-insert-cond :cond "./blee.el" :file "/bisos/apps/defaults/software/plusOrg/dblock/inserts/endOfFileControls.org"
+####+BEGIN: b:py3:cs:framework/endOfFile :basedOn "classification"
+""" #+begin_org
+* [[elisp:(org-cycle)][| *End-Of-Editable-Text* |]] :: emacs and org variables and control parameters
+#+end_org """
+
 #+STARTUP: showall
+
+### local variables:
+### no-byte-compile: t
+### end:
 ####+END:
