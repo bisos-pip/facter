@@ -216,12 +216,12 @@ def getAllAsNamedTuple(
 
     return _facterCurCache
 
-####+BEGIN: b:py3:cs:func/typing :funcName "get" :comment "~Primary Entry~ " :funcType "eType" :retType "" :deco "default" :argsList ""
+####+BEGIN: b:py3:cs:func/typing :funcName "getWithEval" :comment "~Primary Entry~ " :funcType "eType" :retType "" :deco "default" :argsList ""
 """ #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-eType  [[elisp:(outline-show-subtree+toggle)][||]] /get/  ~Primary Entry~  deco=default  [[elisp:(org-cycle)][| ]]
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-eType  [[elisp:(outline-show-subtree+toggle)][||]] /getWithEval/  ~Primary Entry~  deco=default  [[elisp:(org-cycle)][| ]]
 #+end_org """
 @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
-def get(
+def getWithEval(
 ####+END:
         factName,
         cache=True,
@@ -248,34 +248,55 @@ def get(
         b_io.eh.critical_usageError(f"IndexError -- Invalid factName={factName}")
         factValue = None
 
+    # _getWithGetattrUnused(factName, cache=cache)
+
+    # print(f"ZZZ {factName}, {factValue}")
     return factValue
 
-####+BEGIN: b:py3:cs:func/typing :funcName "_getWithGetattrUnused" :funcType "eType" :retType "" :deco "default" :argsList ""
+####+BEGIN: b:py3:cs:func/typing :funcName "_getWithGetattr" :funcType "eType" :retType "" :deco "default" :argsList ""
 """ #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-eType  [[elisp:(outline-show-subtree+toggle)][||]] /_getWithGetattrUnused/  deco=default  [[elisp:(org-cycle)][| ]]
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-eType  [[elisp:(outline-show-subtree+toggle)][||]] /_getWithGetattr/  deco=default  [[elisp:(org-cycle)][| ]]
 #+end_org """
 @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
-def _getWithGetattrUnused(
+def _getWithGetattr(
 ####+END:
         factName,
         cache=True,
+        fromFile=None,
+        fromData=None,
 ):
     """
 ** Instead of eval, use getattr -- unused for now. Revisit later.
     """
-    facts = getAllAsNamedTuple(cache=cache)
+    facts = getAllAsNamedTuple(cache=cache, fromFile=fromFile, fromData=fromData)
 
     factNameList = factName.split(".")
 
-    print(factNameList)
-
     curFacts = facts
 
-    for each in factNameList:
-        curFacts = getattr(curFacts, each)
-        print(curFacts)
+    import logging
+    import traceback
 
-    return
+    for each in factNameList:
+        try:
+            curFacts = getattr(curFacts, each)
+        except AttributeError as e:
+            b_io.eh.critical_usageError(f"AttributeError -- Invalid factName={factName}")
+            curFacts = None
+            logging.error(traceback.format_exc(limit=2))
+            break
+        except IndexError as e:
+            b_io.eh.critical_usageError(f"IndexError -- Invalid factName={factName}")
+            curFacts = None
+            logging.error(traceback.format_exc(limit=2))
+            break
+
+        # print(each)
+        # print(curFacts)
+
+    print(curFacts)
+
+    return curFacts
 
 ####+BEGIN: b:py3:cs:func/typing :funcName "getOrDefault" :funcType "eType" :retType "" :deco "default" :argsList ""
 """ #+begin_org

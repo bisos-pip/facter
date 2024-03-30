@@ -127,6 +127,8 @@ def g_extraParams():
 
 ####+END:
 
+cs.invOutcomeReportControl(cmnd=True, ro=True)
+
 ####+BEGIN: b:py3:cs:main/exposedSymbols :classes ()
 """ #+begin_org
 *  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CsFrmWrk   [[elisp:(outline-show-subtree+toggle)][||]] ~Exposed Symbols List Specification~ with /0/ in Classes List
@@ -205,6 +207,7 @@ class noCmndProcessor(cs.Cmnd):
         cmndOutcome = self.getOpOutcome()
         if argsList:
             facter_csu.factName().pyWCmnd(cmndOutcome, argsList=argsList)
+            print(cmndOutcome.results)
         else:
             examples().pyWCmnd(cmndOutcome,)
 
