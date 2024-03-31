@@ -97,6 +97,7 @@ import collections
 from bisos.facter import facter
 from bisos.banna import bannaPortNu
 
+import pathlib
 
 ####+BEGIN: b:py3:cs:orgItem/basic :type "=Executes=  "  :title "CSU-Lib Executions" :comment "-- cs.invOutcomeReportControl"
 """ #+begin_org
@@ -182,12 +183,19 @@ class examples_csu(cs.Cmnd):
 
         cs.examples.menuChapter('=Direct Interface Commands=')
 
+        fileName = "/tmp/facterFile.json"
+
         perfNamePars = od([('perfName', "HSS-1012"),])
+        fromFilePars = od([('fromFile', fileName), ('cache', 'True')])
+        fromFilePlusPerfNamePars = od(list(perfNamePars.items()) + list(fromFilePars.items()))
+
+        cmnd('facterJsonOutputBytes', pars=perfNamePars, csName=cs.ro.csMuInvokerName())
+        cmnd('facterJsonOutputBytesToFile', pars=od([('perfName', "HSS-1012"), ('fromFile', fileName)]),)
+
+        cmnd('factName', pars=fromFilePars, args='''networking.primary''')
+
         cmnd('cmdbSummary', comment=" # Summarize for cmdb")
         cmnd('cmdbSummary', pars=perfNamePars, comment=" # remote obtain facter data, use it to summarize for cmdb")
-
-        fromFilePars= od([('fromFile', "filePath"), ('cache', 'True')])
-        cmnd('factName', pars=fromFilePars, args='''networking.primary''')
 
         cs.examples.menuSection('/factNameGetattr/')
 
@@ -229,9 +237,54 @@ class facterJsonOutputBytes(cs.Cmnd):
         #+end_org """)
 
         result = facter._runFacterAndGetJsonOutputBytes()
-
         return cmndOutcome.set(opResults=result,)
 
+
+####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "facterJsonOutputBytesToFile" :comment "" :extent "verify" :ro "noCli" :parsMand "fromFile" :parsOpt "perfName" :argsMin 0 :argsMax 0 :pyInv ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<facterJsonOutputBytesToFile>>  =verify= parsMand=fromFile parsOpt=perfName ro=noCli   [[elisp:(org-cycle)][| ]]
+#+end_org """
+class facterJsonOutputBytesToFile(cs.Cmnd):
+    cmndParamsMandatory = [ 'fromFile', ]
+    cmndParamsOptional = [ 'perfName', ]
+    cmndArgsLen = {'Min': 0, 'Max': 0,}
+    rtInvConstraints = cs.rtInvoker.RtInvoker.new_noRo() # NO RO From CLI
+
+    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
+    def cmnd(self,
+             rtInv: cs.RtInvoker,
+             cmndOutcome: b.op.Outcome,
+             fromFile: typing.Optional[str]=None,  # Cs Mandatory Param
+             perfName: typing.Optional[str]=None,  # Cs Optional Param
+    ) -> b.op.Outcome:
+
+        failed = b_io.eh.badOutcome
+        callParamsDict = {'fromFile': fromFile, 'perfName': perfName, }
+        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, None).isProblematic():
+            return failed(cmndOutcome)
+        fromFile = csParam.mappedValue('fromFile', fromFile)
+        perfName = csParam.mappedValue('perfName', perfName)
+####+END:
+        self.cmndDocStr(f""" #+begin_org
+** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  fromFile is realy the destintation.
+        #+end_org """)
+
+        if perfName is None:
+            if (fromData := facterJsonOutputBytes().pyWCmnd(
+                    cmndOutcome,
+            ).results) is None : return failed(cmndOutcome)
+        else:
+            if (fromData := facterJsonOutputBytes().pyRoWCmnd(
+                    cmndOutcome,
+                    rosmu=cs.ro.csMuInvokerName(),
+                    perfName=perfName,
+                    svcName=g_svcName,
+            ).results) is None : return failed(cmndOutcome)
+
+        path = pathlib.Path(fromFile)
+        jsonOutputBytes = path.write_bytes(fromData)
+
+        return cmndOutcome.set(opResults=fromFile,)
 
 
 ####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "factName" :comment "" :extent "verify" :ro "cli" :parsMand "" :parsOpt "cache fromFile perfName" :argsMin 1 :argsMax 9999 :pyInv "fromData"
@@ -264,7 +317,9 @@ class factName(cs.Cmnd):
         perfName = csParam.mappedValue('perfName', perfName)
 ####+END:
         self.cmndDocStr(f""" #+begin_org
-** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Returns factValue for specified factName.
+** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Returns factValue for specified factName. Uses the unsafe 'eval'. See 'factNameGetattr'
+        factNameGetattr fails on lists such as networking.interfaces.lo.bindings[0].address.
+        factName works fine, because of eval.
 *** TODO Makes good sense to -h (for human) in which case we would do | pyLiteralToBash.cs -i stdinToBlack right here.
 SCHEDULED: <2024-03-28 Thu>
         #+end_org """)
@@ -333,9 +388,7 @@ class factNameGetattr(cs.Cmnd):
         perfName = csParam.mappedValue('perfName', perfName)
 ####+END:
         self.cmndDocStr(f""" #+begin_org
-** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Returns factValue for specified factName.
-*** TODO Makes good sense to -h (for human) in which case we would do | pyLiteralToBash.cs -i stdinToBlack right here.
-SCHEDULED: <2024-03-28 Thu>
+** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Returns factValue for specified factName. Uses the safe getattr to do so. See factName cmnd.
         #+end_org """)
 
         result = []
@@ -435,15 +488,16 @@ class cmdbSummary(cs.Cmnd):
                     'os.distro.release.minor',
                     'memory.system.available',
                     'processors.count',
+                    'disks.sda.size',
                 ],
         ).results) is None : return failed(cmndOutcome)
 
         return cmndOutcome.set(opResults=res,)
 
 
-####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep nil :title "RoPerf Examples and SapCreation" :anchor ""  :extraInfo "Command Services"
+####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep nil :title "RoPerf Examples" :anchor ""  :extraInfo "Command Services"
 """ #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*     [[elisp:(outline-show-subtree+toggle)][| _RoPerf Examples and SapCreation_: |]]  Command Services  [[elisp:(org-shifttab)][<)]] E|
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*     [[elisp:(outline-show-subtree+toggle)][| _RoPerf Examples_: |]]  Command Services  [[elisp:(org-shifttab)][<)]] E|
 #+end_org """
 ####+END:
 
@@ -473,73 +527,18 @@ class roPerf_examples_csu(cs.Cmnd):
 ** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Basic example command.
         #+end_org """)
 
-        od = collections.OrderedDict
-        cmnd = cs.examples.cmndEnter
-        literal = cs.examples.execInsert
-
-        perfName = 'me'
-
-        if sectionTitle == 'default': cs.examples.menuChapter('*Remote Operations -- Performer SAP Create and Manage*')
-
-        cmnd('perf_sapCreate', pars=od([('svcName', g_svcName), ('perfName', perfName)]))
-        literal(f"""csRo-manage.cs --svcName={g_svcName} --rosmu={g_rosmu}  -i ro_fps list""")
-        cmnd('csPerformer', pars=od([('svcName', g_svcName)]), comment="&  #  in background Start rpyc CS Service" )
-
+        cs.ro.roPerf_examples(
+            rosmu=g_rosmu,
+            svcName=g_svcName,
+            perfName='me',
+            cmndOutcome=cmndOutcome,
+        )
         return(cmndOutcome)
 
 
-####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "perf_sapCreate" :ro "noCli" :comment "" :parsMand "svcName perfName" :parsOpt "rosmuControl" :argsMin 0 :argsMax 0
+####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep nil :title "RoInvoke Examples" :anchor ""  :extraInfo "Command Services"
 """ #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<perf_sapCreate>>  =verify= parsMand=svcName perfName parsOpt=rosmuControl ro=noCli   [[elisp:(org-cycle)][| ]]
-#+end_org """
-class perf_sapCreate(cs.Cmnd):
-    cmndParamsMandatory = [ 'svcName', 'perfName', ]
-    cmndParamsOptional = [ 'rosmuControl', ]
-    cmndArgsLen = {'Min': 0, 'Max': 0,}
-    rtInvConstraints = cs.rtInvoker.RtInvoker.new_noRo() # NO RO From CLI
-
-    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
-    def cmnd(self,
-             rtInv: cs.RtInvoker,
-             cmndOutcome: b.op.Outcome,
-             svcName: typing.Optional[str]=None,  # Cs Mandatory Param
-             perfName: typing.Optional[str]=None,  # Cs Mandatory Param
-             rosmuControl: typing.Optional[str]=None,  # Cs Optional Param
-    ) -> b.op.Outcome:
-
-        failed = b_io.eh.badOutcome
-        callParamsDict = {'svcName': svcName, 'perfName': perfName, 'rosmuControl': rosmuControl, }
-        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, None).isProblematic():
-            return failed(cmndOutcome)
-        svcName = csParam.mappedValue('svcName', svcName)
-        perfName = csParam.mappedValue('perfName', perfName)
-        rosmuControl = csParam.mappedValue('rosmuControl', rosmuControl)
-####+END:
-        """\
-***** [[elisp:(org-cycle)][| *CmndDesc:* | ]] Invoked both by invoker and performer. Creates path for ro_sap and updates FPs
-        """
-        self.captureRunStr(""" #+begin_org
-#+begin_src sh :results output :session shared
-  example.cs -i perf_sapCreate
-#+end_src
-#+RESULTS:
-:
-        #+end_org """)
-        if self.justCaptureP(): return cmndOutcome
-
-        if (sapPath := cs.ro.ro_sapCreate().pyWCmnd(
-                cmndOutcome,
-                rosmu=g_rosmu,
-                svcName=svcName,
-                perfName=perfName
-        ).results) is None : return failed(cmndOutcome)
-
-        return cmndOutcome.set(opResults=sapPath,)
-
-
-####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep nil :title "RoInvoke Examples and SAP Creation" :anchor ""  :extraInfo "Command Services"
-""" #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*     [[elisp:(outline-show-subtree+toggle)][| _RoInvoke Examples and SAP Creation_: |]]  Command Services  [[elisp:(org-shifttab)][<)]] E|
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*     [[elisp:(outline-show-subtree+toggle)][| _RoInvoke Examples_: |]]  Command Services  [[elisp:(org-shifttab)][<)]] E|
 #+end_org """
 ####+END:
 
@@ -571,17 +570,16 @@ class roInv_examples_csu(cs.Cmnd):
 ** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Basic example command.
         #+end_org """)
 
-        od = collections.OrderedDict
-        cmnd = cs.examples.cmndEnter
-        literal = cs.examples.execInsert
-
         perfIpAddr = 'localhost'
         perfName = 'HSS-1012'
 
-        if sectionTitle == 'default': cs.examples.menuChapter('*Remote Operations --Invoker Management*')
-
-        cmnd('inv_sapCreate', pars=od([('perfName', perfName), ('perfIpAddr', perfIpAddr)]))
-        literal(f"""csRo-manage.cs --svcName="{g_svcName}" --perfName="{perfName}" --rosmu="{g_rosmu}"  -i ro_fps list""")
+        cs.ro.roInv_examples(
+            rosmu=g_rosmu,
+            svcName=g_svcName,
+            perfName=perfName,
+            perfIpAddr=perfIpAddr,
+            cmndOutcome=cmndOutcome,
+        )
 
         roCmnd_examples().pyCmnd(sectionTitle='default', perfName=perfName)
 
@@ -644,63 +642,6 @@ class roCmnd_examples(cs.Cmnd):
 
         return(cmndOutcome)
 
-
-####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "inv_sapCreate" :ro "noCli" :comment "" :parsMand "perfName perfIpAddr" :parsOpt "" :argsMin 0 :argsMax 0
-""" #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<inv_sapCreate>>  =verify= parsMand=perfName perfIpAddr ro=noCli   [[elisp:(org-cycle)][| ]]
-#+end_org """
-class inv_sapCreate(cs.Cmnd):
-    cmndParamsMandatory = [ 'perfName', 'perfIpAddr', ]
-    cmndParamsOptional = [ ]
-    cmndArgsLen = {'Min': 0, 'Max': 0,}
-    rtInvConstraints = cs.rtInvoker.RtInvoker.new_noRo() # NO RO From CLI
-
-    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
-    def cmnd(self,
-             rtInv: cs.RtInvoker,
-             cmndOutcome: b.op.Outcome,
-             perfName: typing.Optional[str]=None,  # Cs Mandatory Param
-             perfIpAddr: typing.Optional[str]=None,  # Cs Mandatory Param
-    ) -> b.op.Outcome:
-
-        failed = b_io.eh.badOutcome
-        callParamsDict = {'perfName': perfName, 'perfIpAddr': perfIpAddr, }
-        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, None).isProblematic():
-            return failed(cmndOutcome)
-        perfName = csParam.mappedValue('perfName', perfName)
-        perfIpAddr = csParam.mappedValue('perfIpAddr', perfIpAddr)
-####+END:
-        """\
-***** [[elisp:(org-cycle)][| *CmndDesc:* | ]] Invoked both by invoker and performer. Creates path for ro_sap and updates FPs
-        """
-        self.captureRunStr(""" #+begin_org
-#+begin_src sh :results output :session shared
-  svcInvSiteRegBox.cs --rosmu svcSiteRegistrars.cs -i reg_sapCreateBox
-#+end_src
-#+RESULTS:
-#+begin_example
-
-FileParam.writeTo path=/bisos/var/cs/ro/sap/svcSiteRegistrars.cs/siteRegistrar/rpyc/default/perfIpAddr/value value=localhost
-#+end_example
-
-#+begin_src sh :results output :session shared
-  svcSiteRegistrars.cs -i reg_sapCreateBox
-#+end_src
-#+RESULTS:
-:
-: bash: svcSiteRegistrars.cs: command not found
-        #+end_org """)
-        if self.justCaptureP(): return cmndOutcome
-
-        if (sapPath := cs.ro.ro_sapCreate().pyWCmnd(
-                cmndOutcome,
-                rosmu=g_rosmu,
-                svcName=g_svcName,
-                perfName=perfName,
-                perfIpAddr=perfIpAddr,
-        ).results) is None : return failed(cmndOutcome)
-
-        return cmndOutcome.set(opResults=sapPath,)
 
 ####+BEGIN: b:py3:cs:framework/endOfFile :basedOn "classification"
 """ #+begin_org
