@@ -248,9 +248,6 @@ def getWithEval(
         b_io.eh.critical_usageError(f"IndexError -- Invalid factName={factName}")
         factValue = None
 
-    # _getWithGetattrUnused(factName, cache=cache)
-
-    # print(f"ZZZ {factName}, {factValue}")
     return factValue
 
 ####+BEGIN: b:py3:cs:func/typing :funcName "_getWithGetattr" :funcType "eType" :retType "" :deco "default" :argsList ""
@@ -293,8 +290,6 @@ def _getWithGetattr(
 
         # print(each)
         # print(curFacts)
-
-    print(curFacts)
 
     return curFacts
 

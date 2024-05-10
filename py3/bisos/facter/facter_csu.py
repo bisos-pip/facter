@@ -324,6 +324,24 @@ class factName(cs.Cmnd):
 SCHEDULED: <2024-03-28 Thu>
         #+end_org """)
 
+        self.captureRunStr(""" #+begin_org
+#+begin_src sh :results output :session shared
+  facter.cs -i factName networking.primary os.distro.id
+#+end_src
+#+RESULTS:
+: [{'networking.primary': 'eno1'}, {'os.distro.id': 'Debian'}]
+
+#+begin_src sh :results output :session shared
+  roInv-facter.cs --perfName="HSS-1012" -i factName networking.primary os.distro.id
+#+end_src
+#+RESULTS:
+: Performing: factName () {'cache': 'True', 'fromFile': None, 'perfName': 'HSS-1012', 'argsList': ['networking.primary', 'os.distro.id'], 'rtInv': <bisos.b.cs.rtInvoker.RtInvoker object at 0x7fe0c4de2310>, 'cmndOutcome': <bisos.b.op.Outcome object at 0x7fe0c4de2590>}
+: Performer Outcome:: [{'networking.primary': 'eno1'}, {'os.distro.id': 'Debian'}]
+: [{'networking.primary': 'eno1'}, {'os.distro.id': 'Debian'}]
+
+
+        #+end_org """)
+
         result = []
 
         factNames = self.cmndArgsGet("0&9999", cmndArgsSpecDict, argsList)
@@ -391,6 +409,14 @@ class factNameGetattr(cs.Cmnd):
 ** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Returns factValue for specified factName. Uses the safe getattr to do so. See factName cmnd.
         #+end_org """)
 
+        self.captureRunStr(""" #+begin_org
+#+begin_src sh :results output :session shared
+  facter.cs -i factNameGetattr networking.primary os.distro.id
+#+end_src
+#+RESULTS:
+: [{'networking.primary': 'eno1'}, {'os.distro.id': 'Debian'}]
+        #+end_org """)
+
         result = []
 
         factNames = self.cmndArgsGet("0&9999", cmndArgsSpecDict, argsList)
@@ -451,6 +477,15 @@ class cmdbSummary(cs.Cmnd):
         self.cmndDocStr(f""" #+begin_org
 ** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Remote invoke all facts. Store here. then process remote.
         #+end_org """)
+
+        self.captureRunStr(""" #+begin_org
+#+begin_src sh :results output :session shared
+  facter.cs -i cmdbSummary
+#+end_src
+#+RESULTS:
+: [{'networking.hostname': 'HSS-1012'}, {'networking.primary': 'eno1'}, {'networking.interfaces.eno1.bindings[0].address': '192.168.0.150'}, {'os.distro.id': 'Debian'}, {'os.distro.release.major': '12'}, {'os.distro.release.minor': '5'}, {'memory.system.available': '41.62 GiB'}, {'processors.count': 24}, {'disks.sda.size': '931.00 GiB'}]
+        #+end_org """)
+
 
         if perfName is None:
             if (fromData := facterJsonOutputBytes().pyWCmnd(
