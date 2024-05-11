@@ -17,12 +17,14 @@ def longDescription():
 # from setuphelpers import get_version, require_python
 # from setuptools import setup
 
-
 # __version__ = get_version('unisos/icm/__init__.py')
-__version__ = '0.3'
+__version__ = '0.4'
 
 
 requires = [
+    "bisos.b",
+    "bisos.banna",
+    "bisos.common",
 ]
 
 
@@ -39,19 +41,10 @@ scripts = [
 setuptools.setup(
     name='bisos.facter',
     version=__version__,
-    namespace_packages=['bisos'],
+    # namespace_packages=['bisos'],
     packages=setuptools.find_packages(),
     scripts=scripts,
-    # data_files=[
-    #     ('pkgInfo', ["unisos/pkgInfo/fp/icmsPkgName/value"]),
-    # ],
-    # package_dir={'unisos.marme': 'unisos'},
-    # package_data={
-    #     'unisos.marme': ['pkgInfo/fp/icmsPkgName/value'],
-    # },
-    # package_data={
-    #     '': ['unisos/marme/resolv.conf'],
-    # },
+    requires=requires,
     include_package_data=True,
     zip_safe=False,
     author='Mohsen Banan',
