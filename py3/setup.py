@@ -24,10 +24,14 @@ def longDescription():
 # from setuptools import setup
 
 # __version__ = get_version('unisos/icm/__init__.py')
-__version__ = '0.5'
+__version__ = '0.8'
 
 
 requires = [
+    "bisos",
+    "blee",
+    "blee.csPlayer",
+    "bisos.transit",   # is used in bisos.b
     "bisos.b",
     "bisos.banna",
     "bisos.common",
