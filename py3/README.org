@@ -1,19 +1,41 @@
-#+title: bisos.facter
-#+subtitle:  Adoption and adaptation of facter to Python and PyCS-Framework and BISOS for use with BISOS-CMDB.
+#+title: bisos.facter:  Adoption and adaptation of facter to Python and PyCS-Framework
+#+DATE: <2024-02-19 Mon 16:27>
+#+AUTHOR: Mohsen BANAN
+#+OPTIONS: toc:4
 
 * Overview
-  :PROPERTIES:
-  :CUSTOM_ID: overview
-  :END:
-bisos.facter: Adoption and adaptation of facter to Python and
-PyCS-Framework and BISOS for use with BISOS-CMDB.
+bisos.facter is a python package for adoption and adaptation of facter to python and
+PyCS-Framework. It is a BISOS capability and a standalone piece of BISOS.
 
-Mention What is BISOS.
+/bisos.facter/ provides access to facter information through python.
 
+/bisos.facter/ is a PyCS can be used both as a Command and as a Service
+(invoke/perform model of remote operations) for central management of
+systems.
+
+Layer on top of Debian, BISOS: (By* Internet Services Operating System) is a
+unified and universal framework for developing both internet services and
+software-service continuums that use internet services. See [[https://github.com/bxGenesis/start][Bootstrapping
+ByStar, BISOS and Blee]] for more information.
+
+Within BISOS, [[bisos.cmdb]] uses bisos.facter for Configuration Management DataBase
+purposes.
+
+
+* Table of Contents     :TOC:
+- [[#overview][Overview]]
+- [[#about-facter][About facter]]
+- [[#bisosfacter-is-a-standalone-piece-of-bisos][bisos.facter Is A Standalone Piece Of BISOS]]
+- [[#bisosfacter-is-a-pycs-command-services-module][bisos.facter Is A PyCS (Command Services) Module]]
+- [[#installation][Installation]]
+- [[#usage][Usage]]
+- [[#support][Support]]
+- [[#documentation][Documentation]]
 
 * About facter
+
 Facter gathers information about the system, which can be used as variables.
-Facter is part of puppet, but it can b used without puppet.
+Facter is part of puppet, but it can also be used without puppet.
 
 To install facter:
 
@@ -21,17 +43,25 @@ To install facter:
 sudo apt-get install -y facter
 #+end_src
 
+Facter is a rubby package. This bisos.facter python packages provides access to
+facter information through python.
+
 * bisos.facter Is A Standalone Piece Of BISOS
-bisos.facter is a standalone piece of BISOS. It can be used byitself.
+
+bisos.facter is a standalone piece of BISOS. It can be used as a self-contained
+Python package separate from BISOS. Follow the installtion and usage
+instructions below for your own use.
+
+* bisos.facter Is A PyCS (Command Services) Module
+
+bisos.facter can be used locally on command-line or remotely as a service.
 
 
 * Installation
-  :PROPERTIES:
-  :CUSTOM_ID: installation
-  :END:
-#+begin_example
+
+#+begin_src bash
 pip install bisos.facter
-#+end_example
+#+end_src
 
 * Usage
   :PROPERTIES:
