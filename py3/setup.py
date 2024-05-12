@@ -3,6 +3,7 @@
 import setuptools
 # import sys
 
+import pypandoc
 
 
 def readme():
@@ -15,8 +16,7 @@ def longDescriptionOld():
         return f.read()
 
 def longDescription():
-    from pypandoc import convert
-    return convert('README.org', 'rst')
+    return pypandoc.convert_file('README.org', 'rst')
 
 
 
