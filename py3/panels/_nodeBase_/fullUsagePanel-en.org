@@ -26,9 +26,8 @@
 * [[elisp:(show-all)][(>]] [[elisp:(describe-function 'org-dblock-write:blee:bxPanel:terseTreeNavigator)][dbf]]
 * +
 *                                        *━━━━━━━━━━━━━━━━━━━━━━━━*
-*   *Siblings*   :: [[elisp:(dired "/bisos/git/bxRepos/bisos-pip/transit/py3/.auctex-auto")][ ~.auctex-auto~ ]] *|* [[elisp:(dired "/bisos/git/bxRepos/bisos-pip/transit/py3/.mypy_cache")][ ~.mypy_cache~ ]] *|* [[elisp:(dired "/bisos/git/bxRepos/bisos-pip/transit/py3/bin")][ ~bin~ ]] *|* [[elisp:(dired "/bisos/git/bxRepos/bisos-pip/transit/py3/bisos")][ ~bisos~ ]] *|* [[elisp:(blee:bnsm:panel-goto "/bisos/git/bxRepos/bisos-pip/transit/py3/panels/_nodeBase_")][ =panels= ]] *|*
-*   /Ancestors/  :: [[elisp:(blee:bnsm:panel-goto "//bisos/git/bxRepos/bisos-pip/transit/py3")][py3]] *|* [[elisp:(blee:bnsm:panel-goto "//bisos/git/bxRepos/bisos-pip/transit/_nodeBase_")][ =transit= ]] *|* [[elisp:(blee:bnsm:panel-goto "//bisos/git/bxRepos/bisos-pip/_nodeBase_")][ =bisos-pip= ]] *|* [[elisp:(blee:bnsm:panel-goto "//bisos/git/bxRepos/_nodeBase_")][ = /<bxRepos>/ = ]] *|* [[elisp:(dired "//bisos/git")][ ~git~ ]] *|*
-*   /Ancestors/  :: [[elisp:(dired "//bisos")][ ~bisos~ ]] *|*
+*   *Siblings*   :: [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/PyCsFwrk/bisos-pieces/bisos.facter/_nodeBase_")][ = /<bisos.facter>/ = ]] *|*
+*   /Ancestors/  :: [[elisp:(blee:bnsm:panel-goto "//bisos/panels/bisos-core/PyCsFwrk/bisos-pieces/_nodeBase_")][ =bisos-pieces= ]] *|* [[elisp:(blee:bnsm:panel-goto "//bisos/panels/bisos-core/PyCsFwrk/_nodeBase_")][ =PyCsFwrk= ]] *|* [[elisp:(blee:bnsm:panel-goto "//bisos/panels/bisos-core/_nodeBase_")][ =bisos-core= ]] *|* [[elisp:(blee:bnsm:panel-goto "//bisos/panels/_nodeBase_")][ = /<panels>/ = ]] *|* [[elisp:(dired "//bisos")][ ~bisos~ ]] *|*
 *                                   _━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━_                          [[elisp:(org-shifttab)][<)]] E|
 ####+END
 ####+BEGIN: blee:bxPanel:foldingSection :outLevel 1 :title "Overview" :anchor "Panel"

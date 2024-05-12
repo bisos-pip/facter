@@ -4,21 +4,27 @@ import setuptools
 # import sys
 
 
+
 def readme():
     with open('TITLE.txt') as f:
         return f.readline().rstrip('\n')
 
 
-def longDescription():
+def longDescriptionOld():
     with open('README.rst') as f:
         return f.read()
+
+def longDescription():
+    from pypandoc import convert
+    return convert('README.org', 'rst')
+
 
 
 # from setuphelpers import get_version, require_python
 # from setuptools import setup
 
 # __version__ = get_version('unisos/icm/__init__.py')
-__version__ = '0.4'
+__version__ = '0.5'
 
 
 requires = [
