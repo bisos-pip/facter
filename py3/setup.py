@@ -2,20 +2,23 @@
 
 import setuptools
 # import sys
-
-import pypandoc
+import re
 
 
 def readme():
-    with open('TITLE.txt') as f:
-        return f.readline().rstrip('\n')
-
-
-def longDescriptionOld():
-    with open('README.rst') as f:
-        return f.read()
+    with open('./README.org') as file:
+        while line := file.readline():
+            if match := re.search(r'^#\+title: (.*)',  line.rstrip()):
+                return match.group(1)
+            return "MISSING TITLE in ./README.org"
 
 def longDescription():
+    try:
+        import pypandoc
+    except ImportError:
+        result = "warning: pypandoc module not found, could not convert to RST"
+        return result
+
     return pypandoc.convert_file('README.org', 'rst')
 
 
@@ -24,7 +27,7 @@ def longDescription():
 # from setuptools import setup
 
 # __version__ = get_version('unisos/icm/__init__.py')
-__version__ = '0.8'
+__version__ = '0.9'
 
 
 requires = [
