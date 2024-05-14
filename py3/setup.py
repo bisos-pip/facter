@@ -18,37 +18,35 @@ def longDescription():
     except ImportError:
         result = "warning: pypandoc module not found, could not convert to RST"
         return result
-
     return pypandoc.convert_file('README.org', 'rst')
 
+####+BEGIN: b:py3:pypi/nextVersion :increment 0.01
 
+__version__ = 0.92
 
-# from setuphelpers import get_version, require_python
-# from setuptools import setup
+####+END:
 
-# __version__ = get_version('unisos/icm/__init__.py')
-__version__ = '0.9'
-
+####+BEGIN: b:py3:pypi/requires :extras ("bisos.transit")
 
 requires = [
-    "bisos",
-    "blee",
-    "blee.csPlayer",
-    "bisos.transit",   # is used in bisos.b
-    "bisos.b",
-    "bisos.banna",
-    "bisos.common",
+"blee",
+"blee.csPlayer",
+"bisos",
+"bisos.b",
+"bisos.banna",
+"bisos.common",
+"bisos.transit",
 ]
+####+END:
 
-
-# print('Setting up under python version %s' % sys.version)
-# print('Requirements: %s' % ','.join(requires))
+####+BEGIN: b:py3:pypi/scripts :comment ""
 
 scripts = [
-    "./bin/facter.cs",
-    "./bin/roInv-facter.cs",
-    "./bin/roPerf-facter.cs",
+'./bin/facter.cs',
+'./bin/roInv-facter.cs',
+'./bin/roPerf-facter.cs',
 ]
+####+END:
 
 
 setuptools.setup(
