@@ -9,7 +9,7 @@ PyCS-Framework. It is a BISOS capability and a standalone piece of BISOS.
 
 /bisos.facter/ provides access to facter information through python.
 
-/bisos.facter/ is a PyCS can be used both as a Command and as a Service
+/bisos.facter/ is a PyCS and can be used both as a Command and as a Service
 (invoke/perform model of remote operations) using RPYC for central management of
 multiple systems.
 
@@ -25,7 +25,10 @@ multiple systems.
   - [[#with-pipx][With pipx]]
 - [[#usage][Usage]]
   - [[#locally-system-command-line][Locally (system command-line)]]
-  - [[#remotely-as-a-service][Remotely (as a service)]]
+  - [[#remotely-as-a-service----performerinvoker][Remotely (as a service -- Performer+Invoker)]]
+    - [[#performer][Performer]]
+    - [[#invoker][Invoker]]
+  - [[#use-by-python-script][Use by python script]]
 - [[#bisosfacter-code-walkthrough][bisos.facter Code Walkthrough]]
   - [[#bisosfacter-source-code-is-in-comeega][bisos.facter Source Code is in COMEEGA]]
   - [[#take-from-120033commonengadopt][Take from 120033/common/engAdopt]]
@@ -133,7 +136,7 @@ These are all one file with 3 names. _roInv-facter.cs_ and _roPerf-facter.cs_ ar
 bin/facter.cs
 #+end_src
 
-** Remotely (as a service)
+** Remotely (as a service -- Performer+Invoker)
 
 You can also  run
 
@@ -151,6 +154,8 @@ bin/roPerf-facter.cs
 #+begin_src bash
 bin/roInv-facter.cs
 #+end_src
+
+** Use by python script
 
 * bisos.facter Code Walkthrough
 
@@ -181,3 +186,6 @@ Part of ByStar Digital Ecosystem [[http://www.by-star.net]].
 This module's primary documentation is in
 [[http://www.by-star.net/PLPC/180047]]
 
+# Local Variables:
+# eval: (setq-local toc-org-max-depth 4)
+# End:

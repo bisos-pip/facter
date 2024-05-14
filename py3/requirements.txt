@@ -1,0 +1,15 @@
+bisos==0.3
+bisos.b==0.4
+bisos.banna==0.3
+bisos.common==0.73
+bisos.currents==0.6
+bisos.facter==0.91
+bisos.transit==0.2
+blee==0.3
+blee.csPlayer==0.1
+enum34==1.1.10
+pkg_resources==0.0.0
+plumbum==1.8.3
+rpyc==6.0.0
+unisos.icm==0.26
+unisos.ucf==0.15
