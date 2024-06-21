@@ -5,13 +5,13 @@
 
 * Overview
 bisos.facter is a python package for adoption and adaptation of *facter* to python and
-PyCS-Framework. It is a BISOS capability and a standalone piece of BISOS.
+PyCS-Framework. It is a BISOS-Capability and a Standalone-BISOS-Package.
 
 /bisos.facter/ provides access to facter information through python.
 
-/bisos.facter/ is a PyCS and can be used both as a Command and as a Service
-(invoke/perform model of remote operations) using RPYC for central management of
-multiple systems.
+/bisos.facter/ is based on PyCS-Foundation and can be used both as a Command and
+as a Service (invoke/perform model of remote operations) using RPYC for central
+management of multiple systems.
 
 
 * Table of Contents     :TOC:
@@ -35,8 +35,9 @@ multiple systems.
   - [[#binfactercs--binroperf-factercs--binroinv-factercs][./bin/facter.cs  (./bin/roPerf-facter.cs  ./bin/roInv-facter.cs)]]
   - [[#bisosfacterfacterpy][./bisos/facter/facter.py]]
   - [[#bisosfacterfacter_csupy][./bisos/facter/facter_csu.py]]
-- [[#support][Support]]
 - [[#documentation][Documentation]]
+  - [[#bisosfacter-blee-panels][bisos.facter Blee-Panels]]
+- [[#support][Support]]
 
 * About facter
 
@@ -172,6 +173,19 @@ A multi-unit
 
 ** ./bisos/facter/facter_csu.py
 
+* Documentation
+
+Part of ByStar Digital Ecosystem [[http://www.by-star.net]].
+
+This module's primary documentation is in
+[[http://www.by-star.net/PLPC/180047]]
+
+** bisos.facter Blee-Panels
+
+bisos.facter Blee-Panles are in ./panels directory.
+From within Blee and BISOS these panles are accessible under the
+Blee "Panels" menu.
+
 * Support
 
 For support, criticism, comments and questions; please contact the
@@ -179,12 +193,6 @@ author/maintainer\\
 [[http://mohsen.1.banan.byname.net][Mohsen Banan]] at:
 [[http://mohsen.1.banan.byname.net/contact]]
 
-* Documentation
-
-Part of ByStar Digital Ecosystem [[http://www.by-star.net]].
-
-This module's primary documentation is in
-[[http://www.by-star.net/PLPC/180047]]
 
 # Local Variables:
 # eval: (setq-local toc-org-max-depth 4)

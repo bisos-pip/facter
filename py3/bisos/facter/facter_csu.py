@@ -606,7 +606,7 @@ class roInv_examples_csu(cs.Cmnd):
         #+end_org """)
 
         perfIpAddr = 'localhost'
-        perfName = 'HSS-1012'
+        perfName = 'here'
 
         cs.ro.roInv_examples(
             rosmu=g_rosmu,
