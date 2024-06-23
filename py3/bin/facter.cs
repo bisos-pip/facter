@@ -170,11 +170,11 @@ class examples(cs.Cmnd):
         cs.examples.myName(cs.G.icmMyName(), cs.G.icmMyFullName())
         cs.examples.commonBrief()
 
-        if cs.ro.csMuIsPerformer() is True:
+        if ro.csMuIsPerformer() is True:
             facter_csu.roPerf_examples_csu().pyCmnd(sectionTitle="default")
-        elif cs.ro.csMuIsInvoker() is True:
+        elif ro.csMuIsInvoker() is True:
             facter_csu.roInv_examples_csu().pyCmnd(sectionTitle="default")
-        elif cs.ro.csMuIsDirect() is True:
+        elif ro.csMuIsDirect() is True:
             bleep.examples_icmBasic()
             facter_csu.examples_csu().pyCmnd()
         else:
