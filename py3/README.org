@@ -31,8 +31,8 @@ management of multiple systems.
     - [[#invoker][Invoker]]
   - [[#use-by-python-script][Use by python script]]
 - [[#bisosfacter-as-an-example-of-command-services-pycs-----code-walkthrough][bisos.facter as an Example of Command Services (PyCS) --- Code Walkthrough]]
-  - [[#filepy3binfactercs--binroperf-factercs--binroinv-factercs][[[file:./py3/bin/facter.cs]]  (./bin/roPerf-facter.cs  ./bin/roInv-facter.cs)]]
-  - [[#filepy3bisosfacterfacterpy][[[file:./py3/bisos/facter/facter.py]]]]
+  - [[#py3binfactercs--binroperf-factercs--binroinv-factercs][./py3/bin/facter.cs  (./bin/roPerf-facter.cs  ./bin/roInv-facter.cs)]]
+  - [[#py3bisosfacterfacterpy][./py3/bisos/facter/facter.py]]
   - [[#bisosfacterfacter_csupy][./bisos/facter/facter_csu.py]]
 - [[#documentation-and-blee-panels][Documentation and Blee-Panels]]
   - [[#bisosfacter-blee-panels][bisos.facter Blee-Panels]]
@@ -169,10 +169,13 @@ The primary API for bisos.facter is ./bisos/facter/facter-csu.py. It is self doc
 
 An overview of the material files of the bisos.facter package is provided below.
 
-** [[file:./py3/bin/facter.cs]]  (./bin/roPerf-facter.cs  ./bin/roInv-facter.cs)
-A multi-unit
+** ./py3/bin/facter.cs  (./bin/roPerf-facter.cs  ./bin/roInv-facter.cs)
 
-** [[file:./py3/bisos/facter/facter.py]]
+File [[file:./py3/bin/facter.cs]] is a multi-unit
+
+** ./py3/bisos/facter/facter.py
+
+File [[file:./py3/bisos/facter/facter.py]] is a CSU.
 
 ** ./bisos/facter/facter_csu.py
 
