@@ -1,4 +1,4 @@
-#+title: bisos.facter:  Adoption and adaptation of facter to Python and as Command-Services that uses the PyCS-Framework
+#+title: bisos.facter:  Adoption and adaptation of facter to Python and as Command-Services
 #+DATE: <2024-02-19 Mon 16:27>
 #+AUTHOR: Mohsen BANAN
 #+OPTIONS: toc:4
