@@ -77,7 +77,7 @@ titled: [[https://github.com/bxplpc/120033][Nature of Polyexistentials]]
 
 bisos.facter can be used locally on command-line or remotely as a service.
 bisos.facter is a PyCS multi-unit command-service.
-PyCS is a framework that converges developement of CLI and Services.
+PyCS is a framework that converges development of CLI and Services.
 PyCS is an alternative to FastAPI, Typer and Click.
 
 bisos.facter uses the PyCS-Framework to:
@@ -85,7 +85,7 @@ bisos.facter uses the PyCS-Framework to:
 1) Provide access to facter facilities through native python.
 2) Provide local access to facter facilities on CLI.
 3) Provide remote access to facter facilities through remote invocation of
-   python Expection Complete Operations using [[https://github.com/tomerfiliba-org/rpyc][rpyc]].
+   python Expectation Complete Operations using [[https://github.com/tomerfiliba-org/rpyc][rpyc]].
 4) Provide remote access to facter facilities on CLI.
 
 What is unique in the PyCS-Framework is that these four models are all
@@ -97,7 +97,7 @@ See https://github.com/bisos-pip/b for an overview.
 * bisos.facter as a Standalone Piece of BISOS
 
 bisos.facter is a standalone piece of BISOS. It can be used as a self-contained
-Python package separate from BISOS. Follow the installtion and usage
+Python package separate from BISOS. Follow the installation and usage
 instructions below for your own use.
 
 
@@ -175,9 +175,9 @@ bin/roInv-facter.cs
 
 ** Use by python script
 
-bisos.bxoGitlab Source Code is in writen in COMEEGA (Collaborative Org-Mode Enhanced Emacs Generalized Authorship) -- https://github.com/bx-blee/comeega.
+bisos.facter Source Code is in written in COMEEGA (Collaborative Org-Mode Enhanced Emacs Generalized Authorship) -- https://github.com/bx-blee/comeega.
 
-The primary API for bisos.facter is ./bisos/facter/facter-csu.py. It is self documented in COMEEGA.
+The primary API for bisos.facter is [[file:./py3/bisos/facter/facter_csu.py]]. It is self documented in COMEEGA.
 
 * bisos.facter as an Example of Command Services (PyCS) -- Code Walkthrough
 
@@ -191,15 +191,15 @@ which imports its commands from bisos.facter.facter_csu and bisos.banna.bannaPor
 
 ** ./py3/bisos/facter/facter.py (COMEEGA Python)
 
-The file [[file:./py3/bisos/facter/facter.py]] includes functions that run a subprocess with "facter --json",
+The file [[file:./py3/bisos/facter/facter.py]] includes functions that run a sub-process with "facter --json",
 obtain the json result as a collection of namedtuples. This can then be subjected to caching and
-then retrieved based on string representations mapping to namedtuples/
+then retrieved based on string representations mapping to namedtuples.
 
 ** ./py3/bisos/facter/facter_conv.py (Conventional Python)
 
 The file [[file:./py3/bisos/facter/facter_conv.py]] is same as  [[file:./py3/bisos/facter/facter.py]]
-without use of COMEEGA. Without Emacs it is not easy to read the COMEEGA files and some people
-prefer not to use of know about COMEEGA. In such situations facter-conv.py can be considered a
+without use of COMEEGA. Without Emacs, it is not easy to read the COMEEGA files and some people
+prefer not to use or know about COMEEGA. In such situations facter_conv.py can be considered as
 conventional sample code.
 
 ** ./py3/bisos/facter/facter_csu.py
@@ -207,7 +207,7 @@ conventional sample code.
 The file [[file:./py3/bisos/facter/facter_csu.py]] is a CS-U (Command-Services Unit).
 It includes definitions of commands and their CLI params and args.
 
-Implemenation of commands in facter_csu.py rely on facilities provided in facter.py.
+Implementation of commands in facter_csu.py rely on facilities provided in facter.py.
 
 ** PyPi and Github Packaging
 
