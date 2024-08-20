@@ -40,16 +40,16 @@ def longDescription():
 
 ####+END:
 
-#  :curDevVer "0.92" :pypiNextVer "0.95"
-####+BEGIN: b:py3:pypi/nextVersion :increment "0.01"
+#
+####+BEGIN: b:py3:pypi/nextVersion :increment "0.01" :curDevVer "0.92" :pypiNextVer "0.95"
 
-# ./pypiUploadVer exists -- pypiNextVer=0.96 -- installedVersion=nil
+# ./pypiUploadVer does not exist -- pypiNextVer=nil -- installedVersion=0.92
 def pkgVersion():
-        return '0.96'   # Version Nu To Be Uploaded
+        return '0.92'  # Version Nu Of Installed Pkg
 
 ####+END:
 
-####+BEGIN: b:py3:pypi/requires :extras ()
+####+BEGINNOT: b:py3:pypi/requires :extras ()
 
 requires = [
 "blee",
@@ -61,7 +61,7 @@ requires = [
 ]
 ####+END:
 
-####+BEGIN: b:py3:pypi/scripts :comment ""
+####+BEGINNOT: b:py3:pypi/scripts :comment ""
 
 scripts = [
 './bin/facter.cs',
@@ -80,7 +80,7 @@ data_files = [
 ]
 
 # :pkgName "--auto--"  --- results in use of name=pkgName(),
-####+BEGIN: b:py3:pypi/setupFuncArgs :pkgName ""
+####+BEGINNOT: b:py3:pypi/setupFuncArgs :pkgName ""
 
 setuptools.setup(
     name='bisos.facter',
