@@ -8,11 +8,12 @@
 ~See Also~: [[https://github.com/bisos-pip/pycs][bisos.PyCS]] | [[https://github.com/bisos-pip/cmdb][bisos.cmdb]]
 
 * Overview
+
+/bisos.facter/ provides access to facter information through python.
+
 bisos.facter is a python package that uses the  [[https://github.com/bisos-pip/pycs][PyCS-Framework]] for adoption and
 adaptation of *facter* to python and PyCS-Framework. It is a BISOS-Capability and
 a Standalone-BISOS-Package.
-
-/bisos.facter/ provides access to facter information through python.
 
 /bisos.facter/ is based on the [[https://github.com/bisos-pip/b][PyCS-Foundation]] and can be used both as a Command
 and as a Service (invoke/perform model of remote operations using [[https://github.com/tomerfiliba-org/rpyc][RPyC]]). Use of
