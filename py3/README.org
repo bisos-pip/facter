@@ -5,6 +5,7 @@
 
 ~Blee Panel Controls~: [[elisp:(show-all)][Show-All]] | [[elisp:(org-shifttab)][Overview]] | [[elisp:(progn (org-shifttab) (org-content))][Content]] | [[elisp:(delete-other-windows)][(1)]] | [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]] | [[elisp:(save-buffer)][Save]]  | [[elisp:(kill-buffer)][Quit]]  | [[elisp:(bury-buffer)][Bury]]  \\
 ~Panel Links~:  [[file:../_nodeBase_/fullUsagePanel-en.org][Blee Panel]]  | [[file:./py3/panels/bisos.facter/_nodeBase_/fullUsagePanel-en.org][Github Panel]]
+~See Also~: [[https://github.com/bisos-pip/pycs][bisos.PyCS]] | [[https://github.com/bisos-pip/cmdb][bisos.cmdb]]
 
 * Overview
 bisos.facter is a python package that uses the PyCS-Framework for adoption and
@@ -13,9 +14,10 @@ a Standalone-BISOS-Package.
 
 /bisos.facter/ provides access to facter information through python.
 
-/bisos.facter/ is based on the [[https://github.com/bisos-pip/b][PyCS-Foundation]] and can be used both as a Command and
-as a Service (invoke/perform model of remote operations) using RPYC for central
-management of multiple systems.
+/bisos.facter/ is based on the [[https://github.com/bisos-pip/b][PyCS-Foundation]] and can be used both as a Command
+and as a Service (invoke/perform model of remote operations using [[https://github.com/tomerfiliba-org/rpyc][RPyC]]). Use of
+bisos.facter as a service, can facilitate central management of multiple
+systems.
 
 
 * Table of Contents     :TOC:
@@ -29,8 +31,8 @@ management of multiple systems.
   - [[#with-pipx][With pipx]]
   - [[#post-installation-basic-testing][Post Installation Basic Testing]]
 - [[#usage][Usage]]
-  - [[#locally-system-command-line][Locally (system command-line)]]
-  - [[#remotely-as-a-service----performerinvoker][Remotely (as a service -- Performer+Invoker)]]
+  - [[#local-usage-system-command-line][Local Usage (system command-line)]]
+  - [[#remote-usage-as-a-service----performerinvoker][Remote Usage (as a service -- Performer+Invoker)]]
     - [[#performer][Performer]]
     - [[#invoker][Invoker]]
   - [[#use-by-python-script][Use by python script]]
@@ -47,8 +49,8 @@ management of multiple systems.
 
 * About facter
 
-[[https://www.puppet.com/docs/puppet/7/facter.html][Facter]] gathers information about the system, which can be used as variables.
-Facter is part of [[https://www.puppet.com/][puppet]], but it can also be used without puppet.
+[[https://www.puppet.com/docs/puppet/7/facter.html][Facter]]  is part of [[https://www.puppet.com/][puppet]], but it can also be used without puppet.
+Facter gathers information about the system as sets of hierarchical variables.
 
 To install facter:
 
@@ -64,17 +66,13 @@ facter information through python both locally and remotely.
 Layered on top of Debian, *BISOS*: (By* Internet Services Operating System) is a
 unified and universal framework for developing both internet services and
 software-service continuums that use internet services. See [[https://github.com/bxGenesis/start][Bootstrapping
-ByStar, BISOS and Blee]] for information about getting started with BISOS.
+ByStar, BISOS and Blee]] for information about getting started with BISOS.\\
+*BISOS* is a foundation for *The Libre-Halaal ByStar Digital Ecosystem* which is
+described as a cure for losses of autonomy and privacy in a book titled: [[https://github.com/bxplpc/120033][Nature
+of Polyexistentials]]
 
-Within BISOS, [[bisos.cmdb]] uses bisos.facter for Configuration Management DataBase
-purposes.
-
-/bisos.facter/ as a PyCS facility is a small piece of a much bigger picture. *BISOS*
-is a foundation for *The Libre-Halaal ByStar Digital Ecosystem* which is described
-as a cure for losses of autonomy and privacy that we are experiencing in a book
-titled: [[https://github.com/bxplpc/120033][Nature of Polyexistentials]]
-
-
+/bisos.facter/ is part of BISOS. Within BISOS, [[bisos.cmdb]] uses bisos.facter for
+Configuration Management DataBase purposes.
 
 * bisos.facter is a Command-Services PyCS Facility
 
@@ -106,7 +104,7 @@ instructions below for your own use.
 
 * Installation
 
-The sources for the  bisos.facter pip package is maintained at:
+The sources for the bisos.facter pip package is maintained at:
 https://github.com/bisos-pip/facter.
 
 The bisos.facter pip package is available at PYPI as
@@ -149,7 +147,7 @@ facter networking.interfaces.lo.bindings
 
 * Usage
 
-** Locally (system command-line)
+** Local Usage (system command-line)
 
 =facter.cs= does the equivalent of facter.
 
@@ -157,7 +155,7 @@ facter networking.interfaces.lo.bindings
 bin/facter.cs
 #+end_src
 
-** Remotely (as a service -- Performer+Invoker)
+** Remote Usage (as a service -- Performer+Invoker)
 
 You can also run:
 
