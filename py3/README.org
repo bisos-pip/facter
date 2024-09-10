@@ -4,7 +4,8 @@
 #+OPTIONS: toc:4
 
 Panel Controls:: [[elisp:(show-all)][Show-All]]  [[elisp:(org-shifttab)][Overview]]  [[elisp:(progn (org-shifttab) (org-content))][Content]] | [[elisp:(delete-other-windows)][(1)]] | [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]] [[elisp:(save-buffer)][Save]] [[elisp:(kill-buffer)][Quit]] [[elisp:(bury-buffer)][Bury]]
-Panel Links:  [[file:../_nodeBase_/fullUsagePanel-en.org]] (blee) -- [[file:./panels/bisos.facter/_nodeBase_/fullUsagePanel-en.org]] (github)
+
+Panel Links:  [[file:../_nodeBase_/fullUsagePanel-en.org]] (blee) -- [[file:./py3/panels/bisos.facter/_nodeBase_/fullUsagePanel-en.org]] (github)
 
 * Overview
 bisos.facter is a python package that uses the PyCS-Framework for adoption and
