@@ -28,8 +28,8 @@ systems.
 - [[#bisosfacter-is-a-command-services-pycs-facility][bisos.facter is a Command-Services PyCS Facility]]
 - [[#bisosfacter-as-a-standalone-piece-of-bisos][bisos.facter as a Standalone Piece of BISOS]]
 - [[#installation][Installation]]
-  - [[#with-pip][With pip]]
-  - [[#with-pipx][With pipx]]
+  - [[#installation-with-pip][Installation With pip]]
+  - [[#installation-with-pipx][Installation With pipx]]
   - [[#post-installation-basic-testing][Post Installation Basic Testing]]
 - [[#usage][Usage]]
   - [[#local-usage-system-command-line][Local Usage (system command-line)]]
@@ -105,7 +105,7 @@ instructions below for your own use.
 
 * Installation
 
-The sources for the bisos.facter pip package is maintained at:
+The sources for the bisos.facter pip package are maintained at:
 https://github.com/bisos-pip/facter.
 
 The bisos.facter pip package is available at PYPI as
@@ -113,7 +113,7 @@ https://pypi.org/project/bisos.facter
 
 You can install bisos.facter with pip or pipx.
 
-** With pip
+** Installation With pip
 
 If you need access to bisos.facter as a python module, you can install it with pip:
 
@@ -121,7 +121,7 @@ If you need access to bisos.facter as a python module, you can install it with p
 pip install bisos.facter
 #+end_src
 
-** With pipx
+** Installation With pipx
 
 If you only need access to bisos.facter on command-line, you can install it with pipx:
 
