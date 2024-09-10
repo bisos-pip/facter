@@ -3,8 +3,8 @@
 #+AUTHOR: Mohsen BANAN
 #+OPTIONS: toc:4
 
-Blee Panel Controls:: [[elisp:(show-all)][Show-All]]  [[elisp:(org-shifttab)][Overview]]  [[elisp:(progn (org-shifttab) (org-content))][Content]] | [[elisp:(delete-other-windows)][(1)]] | [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]] [[elisp:(save-buffer)][Save]] [[elisp:(kill-buffer)][Quit]] [[elisp:(bury-buffer)][Bury]]  \\
-Panel Links:  [[file:../_nodeBase_/fullUsagePanel-en.org]] (blee) -- [[file:./py3/panels/bisos.facter/_nodeBase_/fullUsagePanel-en.org]] (github)
+- Blee Panel Controls :: [[elisp:(show-all)][Show-All]] | [[elisp:(org-shifttab)][Overview]] | [[elisp:(progn (org-shifttab) (org-content))][Content]] | [[elisp:(delete-other-windows)][(1)]] | [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]] | [[elisp:(save-buffer)][Save]]  | [[elisp:(kill-buffer)][Quit]]  | [[elisp:(bury-buffer)][Bury]]  \\
+- Panel Links ::  [[file:../_nodeBase_/fullUsagePanel-en.org][Blee Panel]]  | [[file:./py3/panels/bisos.facter/_nodeBase_/fullUsagePanel-en.org][Github Panel]]
 
 * Overview
 bisos.facter is a python package that uses the PyCS-Framework for adoption and
