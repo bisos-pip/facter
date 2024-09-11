@@ -49,14 +49,17 @@
 * [[elisp:(show-all)][(>]]  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_  _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_       [[elisp:(outline-show-subtree+toggle)][| *Design and Evolution:* |]]  TODOs and Ideas  [[elisp:(org-shifttab)][<)]] E|
 ####+END
 ** +
-** TODO [#A] Capture all of facter in facter git repo panel
-** TODO [#B] (1) Bring over systemd for facter
-** TODO [#B] (5) Add facter to common bases
-** TODO [#B] (1) Bring over systemd for facter
-** TODO [#B] (9) pipx test facter
+** TODO [#B] facter-perfSysd.cs  -- Add sudo to system Cmnds bpf.subProc.Op(outcome=cmndOutcome, cd="/var/log", uid='root', log=1).bash(
+** TODO [#B] facter-perfSysd.cs  -- Verify fullUpdate
+** TODO [#B] facter-perfSysd.cs  -- sudo for configUpdate /bisos/core/bpip/bin/almostJunk/icmEx-pyRunAs.py
+** TODO [#B] /bisos/git/bxRepos/bisos-pip/examples/py3/bisos/examples//pyRunAs_csu.py
+** TODO [#B] Add stdinToBlack somewhere -- Perhaps bisos.basics
+** TODO [#B] Create facterCmdbSummary which is taken from facter_csu.py. Describe as example.
+** TODO [#B] pipx test facter
+** TODO [#B] Testout from remote
 ** TODO [#B] bisos-pip/facter -- facter/asAnExample -- A use case oriented introduction to PyCS  -- A working minimal example
-** TODO [#B] Facter Based CMDB
-** TODO [#B] roPerf-facter.cs in rc.local -- rm service in /usr/lib/systemd/system
+** TODO [#B] Facter Based CMDB -- Build on  cmdbSummary of facter_csu.py
+** TODO [#B] Build bpoContainer Initialize
 ** -B|
 ####+BEGIN: blee:panel:icm:py:intro :outLevel 1 :sep t :folding? nil :label "CS" :icmName "facter.cs" :comment "Examples Menu" :afterComment "-- -i examples"
 * /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
@@ -179,6 +182,21 @@ csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc
 ####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep t :title "Service --- RO Performer Daemon" :anchor "ServicePerfDaemon" :extraInfo "RO-PerfDaemon"
 * /[[elisp:(beginning-of-buffer)][|^]]  [[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]] [[elisp:(delete-other-windows)][|1]]/
 * [[elisp:(show-all)][(>]]  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_  _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_     [[elisp:(outline-show-subtree+toggle)][| _Service --- RO Performer Daemon_: |]] <<ServicePerfDaemon>> RO-PerfDaemon  [[elisp:(org-shifttab)][<)]] E|
+####+END
+####+BEGIN: blee:panel:icm:py:intro :outLevel 1 :sep t :folding? nil :label "CS" :icmName "facter-perfSysd.cs" :comment "Examples Menu" :afterComment "-- -i examples"
+* /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /CS/ :: [[elisp:(lsip-local-run-command "facter-perfSysd.cs -i examples")][facter-perfSysd.cs]]  [[elisp:(lsip-local-run-command "facter-perfSysd.cs -i visit")][visit]]  [[elisp:(lsip-local-run-command "facter-perfSysd.cs -i describe")][describe]] *|*  =Examples Menu= *|*  -- -i examples [[elisp:(org-shifttab)][<)]] E|
+####+END
+####+BEGIN: blee:panel:icm:py:cmnd :outLevel 1 :sep t :folding? nil :label "perfSysd" :icmName "facter-perfSysd.cs  -i facterDaemonFullUpdate" :comment "FullUpdate" :afterComment "Config, Start, Enable"
+* /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /perfSysd/ :: [[elisp:(lsip-local-run-command "facter-perfSysd.cs  -i facterDaemonFullUpdate")][facter-perfSysd.cs  -i facterDaemonFullUpdate]] *|*  =FullUpdate= *|*  Config, Start, Enable  [[elisp:(org-shifttab)][<)]] E|
+####+END:
+####+BEGIN: blee:panel:icm:py:cmnd :outLevel 1 :sep nil :folding? nil :label "perfSysd" :icmName "facter-perfSysd.cs --cls=sysdUnitFacter -i sysdSysUnit status" :afterComment "Recent Logs"
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /perfSysd/ :: [[elisp:(lsip-local-run-command "facter-perfSysd.cs --cls=sysdUnitFacter -i sysdSysUnit status")][facter-perfSysd.cs --cls=sysdUnitFacter -i sysdSysUnit status]] *|*  Recent Logs  [[elisp:(org-shifttab)][<)]] E|
+####+END:
+####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep t :title "BPO Container --- Addition" :anchor "" :extraInfo ""
+* /[[elisp:(beginning-of-buffer)][|^]]  [[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]] [[elisp:(delete-other-windows)][|1]]/
+* [[elisp:(show-all)][(>]]  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_  _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_     [[elisp:(outline-show-subtree+toggle)][| _BPO Container --- Addition_: |]]    [[elisp:(org-shifttab)][<)]] E|
 ####+END
 ####+BEGIN: blee:bxPanel:separator :outLevel 1
 * /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
