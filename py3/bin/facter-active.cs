@@ -29,7 +29,7 @@
 ####+BEGIN: b:prog:file/particulars :authors ("./inserts/authors-mb.org")
 """ #+begin_org
 * *[[elisp:(org-cycle)][| Particulars |]]* :: Authors, version
-** This File: /bisos/git/bxRepos/bisos-pip/facter/py3/bin/roPerf-facter.cs
+** This File: /bisos/git/bxRepos/bisos-pip/facter/py3/bin/facter-active.cs
 ** Authors: Mohsen BANAN, http://mohsen.banan.1.byname.net/contact
 #+end_org """
 ####+END:
@@ -39,10 +39,10 @@
 * *[[elisp:(org-cycle)][| Particulars-csInfo |]]*
 #+end_org """
 import typing
-csInfo: typing.Dict[str, typing.Any] = { 'moduleName': ['roPerf-facter'], }
-csInfo['version'] = '202403273209'
+csInfo: typing.Dict[str, typing.Any] = { 'moduleName': ['facter-active'], }
+csInfo['version'] = '202409222627'
 csInfo['status']  = 'inUse'
-csInfo['panel'] = 'roPerf-facter-Panel.org'
+csInfo['panel'] = 'facter-active-Panel.org'
 csInfo['groupingType'] = 'IcmGroupingType-pkged'
 csInfo['cmndParts'] = 'IcmCmndParts[common] IcmCmndParts[param]'
 ####+END:
@@ -131,7 +131,6 @@ def g_extraParams():
 
 cs.invOutcomeReportControl(cmnd=True, ro=True)
 
-
 ####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep nil :title "CmndSvcs" :anchor ""  :extraInfo "Command Services Section"
 """ #+begin_org
 *  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*     [[elisp:(outline-show-subtree+toggle)][| _CmndSvcs_: |]]  Command Services Section  [[elisp:(org-shifttab)][<)]] E|
@@ -166,48 +165,136 @@ class examples(cs.Cmnd):
         cs.examples.myName(cs.G.icmMyName(), cs.G.icmMyFullName())
         cs.examples.commonBrief()
 
-        if ro.csMuIsPerformer() is True:
-            facter_csu.roPerf_examples_csu().pyCmnd(sectionTitle="default")
-        elif ro.csMuIsInvoker() is True:
-            facter_csu.roInv_examples_csu().pyCmnd(sectionTitle="default")
-        elif ro.csMuIsDirect() is True:
-            bleep.examples_icmBasic()
-            facter_csu.examples_csu().pyCmnd()
-        else:
-            oops()
+        # od = collections.OrderedDict
+        cmnd = cs.examples.cmndEnter
+        # literal = cs.examples.execInsert
+
+        cs.examples.menuChapter('=Activation Commands=')
+        cmnd('facter_activate', comment=" # Activate")
+        cmnd('facter_activationStatus', comment=" # Activation Status")
+        cmnd('facter_deactivate', comment=" # De-Activate")
+
 
         return(cmndOutcome)
 
-####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "noCmndProcessor" :comment "" :parsMand "" :parsOpt "" :argsMin 0 :argsMax 9999 :pyInv ""
+####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "facter_activate" :comment "" :extent "verify" :ro "cli" :parsMand "" :parsOpt "" :argsMin 0 :argsMax 0 :pyInv ""
 """ #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<noCmndProcessor>>  =verify= argsMax=9999 ro=cli   [[elisp:(org-cycle)][| ]]
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<facter_activate>>  =verify= ro=cli   [[elisp:(org-cycle)][| ]]
 #+end_org """
-class noCmndProcessor(cs.Cmnd):
+class facter_activate(cs.Cmnd):
     cmndParamsMandatory = [ ]
     cmndParamsOptional = [ ]
-    cmndArgsLen = {'Min': 0, 'Max': 9999,}
+    cmndArgsLen = {'Min': 0, 'Max': 0,}
 
     @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
     def cmnd(self,
              rtInv: cs.RtInvoker,
              cmndOutcome: b.op.Outcome,
-             argsList: typing.Optional[list[str]]=None,  # CsArgs
     ) -> b.op.Outcome:
 
         failed = b_io.eh.badOutcome
         callParamsDict = {}
-        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, argsList).isProblematic():
+        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, None).isProblematic():
             return failed(cmndOutcome)
-        cmndArgsSpecDict = self.cmndArgsSpec()
 ####+END:
-        cmndOutcome = self.getOpOutcome()
-        if argsList:
-            facter_csu.factName().pyWCmnd(cmndOutcome, argsList=argsList)
-            print(cmndOutcome.results)
-        else:
-            examples().pyWCmnd(cmndOutcome,)
+        if self.cmndDocStr(f""" #+begin_org
+** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  A starting point command.
+        #+end_org """): return(cmndOutcome)
 
-        return(cmndOutcome)
+        self.captureRunStr(""" #+begin_org
+#+begin_src sh :results output :session shared
+  facter.cs -i factName networking.primary os.distro.id
+#+end_src
+#+RESULTS:
+: [{'networking.primary': 'eno1'}, {'os.distro.id': 'Debian'}]
+        #+end_org """)
+
+        if b.subProc.WOpW(invedBy=self, log=1).bash(
+                f"""facter-binsPrep.cs  -i aptPkgs_update all """,
+        ).isProblematic():  return(b_io.eh.badOutcome(cmndOutcome))
+
+        if b.subProc.WOpW(invedBy=self, log=1).bash(
+                f"""facter-perfSysd.cs --cls="sysdUnitFacter"  -i sysdSysUnit ensure""",
+        ).isProblematic():  return(b_io.eh.badOutcome(cmndOutcome))
+
+        return cmndOutcome
+
+####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "facter_deactivate" :comment "" :extent "verify" :ro "cli" :parsMand "" :parsOpt "" :argsMin 0 :argsMax 0 :pyInv ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<facter_deactivate>>  =verify= ro=cli   [[elisp:(org-cycle)][| ]]
+#+end_org """
+class facter_deactivate(cs.Cmnd):
+    cmndParamsMandatory = [ ]
+    cmndParamsOptional = [ ]
+    cmndArgsLen = {'Min': 0, 'Max': 0,}
+
+    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
+    def cmnd(self,
+             rtInv: cs.RtInvoker,
+             cmndOutcome: b.op.Outcome,
+    ) -> b.op.Outcome:
+
+        failed = b_io.eh.badOutcome
+        callParamsDict = {}
+        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, None).isProblematic():
+            return failed(cmndOutcome)
+####+END:
+        if self.cmndDocStr(f""" #+begin_org
+** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  A starting point command.
+        #+end_org """): return(cmndOutcome)
+
+        self.captureRunStr(""" #+begin_org
+#+begin_src sh :results output :session shared
+  facter.cs -i factName networking.primary os.distro.id
+#+end_src
+#+RESULTS:
+: [{'networking.primary': 'eno1'}, {'os.distro.id': 'Debian'}]
+        #+end_org """)
+
+        if b.subProc.WOpW(invedBy=self, log=1).bash(
+                f"""echo DeActivation Provided Params and Args were: """,
+        ).isProblematic():  return(b_io.eh.badOutcome(cmndOutcome))
+
+        return cmndOutcome
+
+####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "facter_activationStatus" :comment "" :extent "verify" :ro "cli" :parsMand "" :parsOpt "" :argsMin 0 :argsMax 0 :pyInv ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<facter_activationStatus>>  =verify= ro=cli   [[elisp:(org-cycle)][| ]]
+#+end_org """
+class facter_activationStatus(cs.Cmnd):
+    cmndParamsMandatory = [ ]
+    cmndParamsOptional = [ ]
+    cmndArgsLen = {'Min': 0, 'Max': 0,}
+
+    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
+    def cmnd(self,
+             rtInv: cs.RtInvoker,
+             cmndOutcome: b.op.Outcome,
+    ) -> b.op.Outcome:
+
+        failed = b_io.eh.badOutcome
+        callParamsDict = {}
+        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, None).isProblematic():
+            return failed(cmndOutcome)
+####+END:
+        if self.cmndDocStr(f""" #+begin_org
+** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  A starting point command.
+        #+end_org """): return(cmndOutcome)
+
+        self.captureRunStr(""" #+begin_org
+#+begin_src sh :results output :session shared
+  facter.cs -i factName networking.primary os.distro.id
+#+end_src
+#+RESULTS:
+: [{'networking.primary': 'eno1'}, {'os.distro.id': 'Debian'}]
+        #+end_org """)
+
+        if b.subProc.WOpW(invedBy=self, log=1).bash(
+                f"""echo Activation Status  Provided Params and Args were: """,
+        ).isProblematic():  return(b_io.eh.badOutcome(cmndOutcome))
+
+        return cmndOutcome
+
 
 ####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep nil :title "Main" :anchor ""  :extraInfo "Framework DBlock"
 """ #+begin_org
@@ -215,15 +302,15 @@ class noCmndProcessor(cs.Cmnd):
 #+end_org """
 ####+END:
 
-####+BEGIN: b:py3:cs:framework/main :csInfo "csInfo" :noCmndEntry "noCmndProcessor" :extraParamsHook "g_extraParams" :importedCmndsModules "g_importedCmndsModules"
+####+BEGIN: b:py3:cs:framework/main :csInfo "csInfo" :noCmndEntry "examples" :extraParamsHook "g_extraParams" :importedCmndsModules "g_importedCmndsModules"
 """ #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CsFrmWrk   [[elisp:(outline-show-subtree+toggle)][||]] =g_csMain= (csInfo, _noCmndProcessor_, g_extraParams, g_importedCmndsModules)
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CsFrmWrk   [[elisp:(outline-show-subtree+toggle)][||]] =g_csMain= (csInfo, _examples_, g_extraParams, g_importedCmndsModules)
 #+end_org """
 
 if __name__ == '__main__':
     cs.main.g_csMain(
         csInfo=csInfo,
-        noCmndEntry=noCmndProcessor,  # specify a Cmnd name
+        noCmndEntry=examples,  # specify a Cmnd name
         extraParamsHook=g_extraParams,
         importedCmndsModules=g_importedCmndsModules,
     )

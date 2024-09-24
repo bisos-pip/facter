@@ -25,9 +25,10 @@
 ####+BEGIN: blee:bxPanel:terseTreeNavigator :panelsList "bxPanel"
 * [[elisp:(show-all)][(>]] [[elisp:(describe-function 'org-dblock-write:blee:bxPanel:terseTreeNavigator)][dbf]]
 * +
-*   =Decedents=  :: [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.facter/README")][README]] *|* 
+*   =Decedents=  :: [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.facter/README")][README]] *|* [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.facter/facter-perfSysd.cs/_nodeBase_")][ =facter-perfSysd.cs= ]] *|*
 *                                        *━━━━━━━━━━━━━━━━━━━━━━━━*
-*   *Siblings*   :: [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.facter/_nodeBase_")][ = /<bisos.facter>/ = ]] *|*
+*   *Siblings*   :: [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.b/_nodeBase_")][ = /<bisos.b>/ = ]] *|* [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.basics/_nodeBase_")][ = /<bisos.basics>/ = ]] *|* [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.cmdb/_nodeBase_")][ = /<bisos.cmdb>/ = ]] *|* [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.common/_nodeBase_")][ = /<bisos.common>/ = ]] *|* [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.debian/_nodeBase_")][ = /<bisos.debian>/ = ]] *|*
+*   *Siblings*   :: [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.examples/_nodeBase_")][ = /<bisos.examples>/ = ]] *|* [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.facter/_nodeBase_")][ = /<bisos.facter>/ = ]] *|* [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.py3-all/_nodeBase_")][ = /<bisos.py3-all>/ = ]] *|*
 *   /Ancestors/  :: [[elisp:(blee:bnsm:panel-goto "//bisos/panels/bisos-core/bisos-pip/_nodeBase_")][ =bisos-pip= ]] *|* [[elisp:(blee:bnsm:panel-goto "//bisos/panels/bisos-core/_nodeBase_")][ =bisos-core= ]] *|* [[elisp:(blee:bnsm:panel-goto "//bisos/panels/_nodeBase_")][ = /<panels>/ = ]] *|* [[elisp:(dired "//bisos")][ ~bisos~ ]] *|*
 *                                   _━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━_                          [[elisp:(org-shifttab)][<)]] E|
 ####+END
@@ -35,6 +36,7 @@
 * [[elisp:(show-all)][(>]]  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_  _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_       [[elisp:(outline-show-subtree+toggle)][| *Overview:* |]] <<Panel>>   [[elisp:(org-shifttab)][<)]] E|
 ####+END
 ** +
+** Scope of this panel is bisos.facter.
 ** See  [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.facter/README")][README]] of this bisos-pip package.
 ** For a localhost Inv/Perf service run, follow this order:
 *** +
@@ -49,22 +51,32 @@
 * [[elisp:(show-all)][(>]]  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_  _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_       [[elisp:(outline-show-subtree+toggle)][| *Design and Evolution:* |]]  TODOs and Ideas  [[elisp:(org-shifttab)][<)]] E|
 ####+END
 ** +
-** TODO [#B] facter-perfSysd.cs  -- Add sudo to system Cmnds bpf.subProc.Op(outcome=cmndOutcome, cd="/var/log", uid='root', log=1).bash(
+** WAITING [#B] facter-perfSysd.cs  -- Add sudo to system Cmnds bpf.subProc.Op(outcome=cmndOutcome, cd="/var/log", uid='root', log=1).bash(
 ** TODO [#B] facter-perfSysd.cs  -- Verify fullUpdate
 ** TODO [#B] facter-perfSysd.cs  -- sudo for configUpdate /bisos/core/bpip/bin/almostJunk/icmEx-pyRunAs.py
 ** TODO [#B] /bisos/git/bxRepos/bisos-pip/examples/py3/bisos/examples//pyRunAs_csu.py
 ** TODO [#B] Add stdinToBlack somewhere -- Perhaps bisos.basics
 ** TODO [#B] Create facterCmdbSummary which is taken from facter_csu.py. Describe as example.
-** TODO [#B] pipx test facter
+** TODO [#B] pipx test facter on virgin system
 ** TODO [#B] Testout from remote
-** TODO [#B] bisos-pip/facter -- facter/asAnExample -- A use case oriented introduction to PyCS  -- A working minimal example
-** TODO [#B] Facter Based CMDB -- Build on  cmdbSummary of facter_csu.py
+** TODO [#B] bisos-pip/facter -- facter/asAnExample -- Remote Facter As facter.cs of bisos.facter --- A use case oriented introduction to PyCS  -- A working minimal example
 ** TODO [#B] Build bpoContainer Initialize
 ** -B|
+####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep t :title "Pip and Pipx Package Installation" :anchor "Command" :extraInfo "bisos.facter"
+* /[[elisp:(beginning-of-buffer)][|^]]  [[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]] [[elisp:(delete-other-windows)][|1]]/
+* [[elisp:(show-all)][(>]]  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_  _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_     [[elisp:(outline-show-subtree+toggle)][| _Pip and Pipx Package Installation_: |]] <<Command>> bisos.facter  [[elisp:(org-shifttab)][<)]] E|
+####+END:
+####+BEGIN: blee:bxPanel:runResult :outLevel 1  :sep t :command "pipx install bisos.facter"  :results "none" :comment "Pipx Package Installation" :afterComment ""
+* /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]     [[elisp:(lsip-local-run-command "pipx install bisos.facter")][pipx install bisos.facter]] *|*  =Pipx Package Installation= *|*    [[elisp:(org-shifttab)][<)]] E|
+####+END:
+####+BEGIN: blee:bxPanel:runResult :outLevel 1  :sep nil :command "pipx uninstall bisos.facter"  :results "none" :comment "Pipx Package Un-Installation" :afterComment ""
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]     [[elisp:(lsip-local-run-command "pipx uninstall bisos.facter")][pipx uninstall bisos.facter]] *|*  =Pipx Package Un-Installation= *|*    [[elisp:(org-shifttab)][<)]] E|
+####+END:
 ####+BEGIN: blee:panel:icm:py:intro :outLevel 1 :sep t :folding? nil :label "CS" :icmName "facter.cs" :comment "Examples Menu" :afterComment "-- -i examples"
 * /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
-* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /CS/ :: [[elisp:(lsip-local-run-command "facter.cs -i examples")][facter.cs]]  [[elisp:(lsip-local-run-command "facter.cs -i visit")][visit]]  [[elisp:(lsip-local-run-command "facter.cs -i describe")][describe]] *|*  =Examples Menu= *|*  -- -i examples [[elisp:(org-shifttab)][<)]] E|
-####+END:
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /CS/ :: [[elisp:(lsip-local-run-command "facter.cs -i examples")][facter.cs]]  [[elisp:(lsip-local-run-command "facter.cs -i visit")][visit]]  [[elisp:(lsip-local-run-command "which -a facter.cs")][which -a]]  [[elisp:(lsip-local-run-command "facter.cs -i describe")][describe]] *|*  =Examples Menu= *|*  -- -i examples [[elisp:(org-shifttab)][<)]] E|
+####+END
 ####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep t :title "Command --- Direct Invocation" :anchor "Command" :extraInfo "CLI"
 * /[[elisp:(beginning-of-buffer)][|^]]  [[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]] [[elisp:(delete-other-windows)][|1]]/
 * [[elisp:(show-all)][(>]]  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_  _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_     [[elisp:(outline-show-subtree+toggle)][| _Command --- Direct Invocation_: |]] <<Command>> CLI  [[elisp:(org-shifttab)][<)]] E|
@@ -95,7 +107,7 @@ Last Executed at: 202409-10-13:35:28  by: bystar on: HSS-1013
 ####+END
 ####+BEGIN: blee:panel:icm:py:intro :outLevel 1 :sep t :folding? nil :label "CS" :icmName "roInv-facter.cs" :comment "Examples Menu" :afterComment "-- -i examples"
 * /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
-* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /CS/ :: [[elisp:(lsip-local-run-command "roInv-facter.cs -i examples")][roInv-facter.cs]]  [[elisp:(lsip-local-run-command "roInv-facter.cs -i visit")][visit]]  [[elisp:(lsip-local-run-command "roInv-facter.cs -i describe")][describe]] *|*  =Examples Menu= *|*  -- -i examples [[elisp:(org-shifttab)][<)]] E|
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /CS/ :: [[elisp:(lsip-local-run-command "roInv-facter.cs -i examples")][roInv-facter.cs]]  [[elisp:(lsip-local-run-command "roInv-facter.cs -i visit")][visit]]  [[elisp:(lsip-local-run-command "which -a roInv-facter.cs")][which -a]]  [[elisp:(lsip-local-run-command "roInv-facter.cs -i describe")][describe]] *|*  =Examples Menu= *|*  -- -i examples [[elisp:(org-shifttab)][<)]] E|
 ####+END
 ####+BEGIN: blee:bxPanel:runResult :outLevel 1 :sep t :command "roInv-facter.cs --svcName=svcFacter --perfName=here --rosmu=roInv-facter.cs --perfIpAddr=localhost  -i inv_sapCreate"  :results "stdout" :comment "Folded stdout" :afterComment ""
 * /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
@@ -140,7 +152,7 @@ csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpy
 ####+END
 ####+BEGIN: blee:panel:icm:py:intro :outLevel 1 :sep t :folding? nil :label "CS" :icmName "roPerf-facter.cs" :comment "Examples Menu" :afterComment "-- -i examples"
 * /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
-* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /CS/ :: [[elisp:(lsip-local-run-command "roPerf-facter.cs -i examples")][roPerf-facter.cs]]  [[elisp:(lsip-local-run-command "roPerf-facter.cs -i visit")][visit]]  [[elisp:(lsip-local-run-command "roPerf-facter.cs -i describe")][describe]] *|*  =Examples Menu= *|*  -- -i examples [[elisp:(org-shifttab)][<)]] E|
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /CS/ :: [[elisp:(lsip-local-run-command "roPerf-facter.cs -i examples")][roPerf-facter.cs]]  [[elisp:(lsip-local-run-command "roPerf-facter.cs -i visit")][visit]]  [[elisp:(lsip-local-run-command "which -a roPerf-facter.cs")][which -a]]  [[elisp:(lsip-local-run-command "roPerf-facter.cs -i describe")][describe]] *|*  =Examples Menu= *|*  -- -i examples [[elisp:(org-shifttab)][<)]] E|
 ####+END
 ####+BEGIN: blee:bxPanel:runResult :outLevel 1 :sep t :command "roPerf-facter.cs --svcName=svcFacter --perfName=me --rosmu=roPerf-facter.cs  -i perf_sapCreate"  :results "stdout" :comment "Folded stdout" :afterComment ""
 * /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
@@ -185,7 +197,7 @@ csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc
 ####+END
 ####+BEGIN: blee:panel:icm:py:intro :outLevel 1 :sep t :folding? nil :label "CS" :icmName "facter-perfSysd.cs" :comment "Examples Menu" :afterComment "-- -i examples"
 * /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
-* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /CS/ :: [[elisp:(lsip-local-run-command "facter-perfSysd.cs -i examples")][facter-perfSysd.cs]]  [[elisp:(lsip-local-run-command "facter-perfSysd.cs -i visit")][visit]]  [[elisp:(lsip-local-run-command "facter-perfSysd.cs -i describe")][describe]] *|*  =Examples Menu= *|*  -- -i examples [[elisp:(org-shifttab)][<)]] E|
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /CS/ :: [[elisp:(lsip-local-run-command "facter-perfSysd.cs -i examples")][facter-perfSysd.cs]]  [[elisp:(lsip-local-run-command "facter-perfSysd.cs -i visit")][visit]]  [[elisp:(lsip-local-run-command "which -a facter-perfSysd.cs")][which -a]]  [[elisp:(lsip-local-run-command "facter-perfSysd.cs -i describe")][describe]] *|*  =Examples Menu= *|*  -- -i examples [[elisp:(org-shifttab)][<)]] E|
 ####+END
 ####+BEGIN: blee:panel:icm:py:cmnd :outLevel 1 :sep t :folding? nil :label "perfSysd" :icmName "facter-perfSysd.cs  -i facterDaemonFullUpdate" :comment "FullUpdate" :afterComment "Config, Start, Enable"
 * /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
