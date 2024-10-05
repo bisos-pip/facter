@@ -164,7 +164,7 @@ class examples(cs.Cmnd):
         #+end_org """)
 
         cs.examples.myName(cs.G.icmMyName(), cs.G.icmMyFullName())
-        cs.examples.commonBrief()
+        cs.examples.commonBrief(excludeRoExamples=False)
 
         if ro.csMuIsPerformer() is True:
             facter_csu.roPerf_examples_csu().pyCmnd(sectionTitle="default")
@@ -174,7 +174,7 @@ class examples(cs.Cmnd):
             bleep.examples_icmBasic()
             facter_csu.examples_csu().pyCmnd()
         else:
-            oops()
+            b_io.eh.critical_oops()
 
         return(cmndOutcome)
 
