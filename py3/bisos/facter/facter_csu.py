@@ -317,7 +317,7 @@ class factName(cs.Cmnd):
         perfName = csParam.mappedValue('perfName', perfName)
 ####+END:
         self.cmndDocStr(f""" #+begin_org
-** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Returns factValue for specified factName. Uses the unsafe 'eval'. See 'factNameGetattr'
+** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Returns /factValue/ for specified factNames in *argsList*. Uses the unsafe 'eval'. See [[factNameGetattr]].
         factNameGetattr fails on lists such as networking.interfaces.lo.bindings[0].address.
         factName works fine, because of eval.
 *** TODO Makes good sense to -h (for human) in which case we would do | pyLiteralToBash.cs -i stdinToBlack right here.
@@ -326,10 +326,10 @@ SCHEDULED: <2024-03-28 Thu>
 
         self.captureRunStr(""" #+begin_org
 #+begin_src sh :results output :session shared
-  facter.cs -i factName networking.primary os.distro.id
+  facter.cs -i factName networking.primary # os.distro.id
 #+end_src
 #+RESULTS:
-: [{'networking.primary': 'eno1'}, {'os.distro.id': 'Debian'}]
+: [{'networking.primary': 'enp1s0'}]
 
 #+begin_src sh :results output :session shared
   roInv-facter.cs --perfName="HSS-1012" -i factName networking.primary os.distro.id
@@ -406,15 +406,15 @@ class factNameGetattr(cs.Cmnd):
         perfName = csParam.mappedValue('perfName', perfName)
 ####+END:
         self.cmndDocStr(f""" #+begin_org
-** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Returns factValue for specified factName. Uses the safe getattr to do so. See factName cmnd.
+** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Returns factValue for specified factNames of *argsList*. Uses the safe getattr to do so. See [[factName]] cmnd.
         #+end_org """)
 
         self.captureRunStr(""" #+begin_org
 #+begin_src sh :results output :session shared
-  facter.cs -i factNameGetattr networking.primary os.distro.id
+  facter.cs -i factNameGetattr networking.primary # os.distro.id
 #+end_src
 #+RESULTS:
-: [{'networking.primary': 'eno1'}, {'os.distro.id': 'Debian'}]
+: [{'networking.primary': 'enp1s0'}]
         #+end_org """)
 
         result = []
@@ -477,6 +477,7 @@ class cmdbSummary(cs.Cmnd):
         self.cmndDocStr(f""" #+begin_org
 ** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Remote invoke all facts. Store here. then process remote.
         #+end_org """)
+
 
         self.captureRunStr(""" #+begin_org
 #+begin_src sh :results output :session shared
