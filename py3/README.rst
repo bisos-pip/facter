@@ -9,19 +9,36 @@ bisos.facter: Adoption and adaptation of facter to Python and as Command-Service
    :depth: 3
 ..
 
+| ``Blee Panel Controls``: `Show-All <elisp:(show-all)>`__ \|
+  `Overview <elisp:(org-shifttab)>`__ \|
+  `Content <elisp:(progn (org-shifttab) (org-content))>`__ \|
+  `(1) <elisp:(delete-other-windows)>`__ \|
+  `S&Q <elisp:(progn (save-buffer) (kill-buffer))>`__ \|
+  `Save <elisp:(save-buffer)>`__ \| `Quit <elisp:(kill-buffer)>`__ \|
+  `Bury <elisp:(bury-buffer)>`__
+| ``Panel Links``: `Blee Panel <../_nodeBase_/fullUsagePanel-en.org>`__
+  \| `Github
+  Panel <./py3/panels/bisos.facter/_nodeBase_/fullUsagePanel-en.org>`__
+  ``See Also``: `At PYPI <https://pypi.org/project/bisos.facter>`__ \|
+  `bisos.PyCS <https://github.com/bisos-pip/pycs>`__ \|
+  `bisos.cmdb <https://github.com/bisos-pip/cmdb>`__
+
 Overview
 ========
 
-bisos.facter is a python package that uses the PyCS-Framework for
-adoption and adaptation of **facter** to python and PyCS-Framework. It
-is a BISOS-Capability and a Standalone-BISOS-Package.
-
 *bisos.facter* provides access to facter information through python.
+
+bisos.facter is a python package that uses the
+`PyCS-Framework <https://github.com/bisos-pip/pycs>`__ for adoption and
+adaptation of **facter** to python and PyCS-Framework. It is a
+BISOS-Capability and a Standalone-BISOS-Package.
 
 *bisos.facter* is based on the
 `PyCS-Foundation <https://github.com/bisos-pip/b>`__ and can be used
 both as a Command and as a Service (invoke/perform model of remote
-operations) using RPYC for central management of multiple systems.
+operations using `RPyC <https://github.com/tomerfiliba-org/rpyc>`__).
+Use of bisos.facter as a service, can facilitate central management of
+multiple systems.
 
 .. _table-of-contents:
 
@@ -30,24 +47,25 @@ Table of Contents TOC
 
 -  `Overview <#overview>`__
 -  `About facter <#about-facter>`__
--  `About BISOS — ByStar Internet Services Operating
-   System <#about-bisos-----bystar-internet-services-operating-system>`__
+-  `Part of BISOS — ByStar Internet Services Operating
+   System <#part-of-bisos-----bystar-internet-services-operating-system>`__
 -  `bisos.facter is a Command-Services PyCS
    Facility <#bisosfacter-is-a-command-services-pycs-facility>`__
 -  `bisos.facter as a Standalone Piece of
    BISOS <#bisosfacter-as-a-standalone-piece-of-bisos>`__
 -  `Installation <#installation>`__
 
-   -  `With pip <#with-pip>`__
-   -  `With pipx <#with-pipx>`__
+   -  `Installation With pip <#installation-with-pip>`__
+   -  `Installation With pipx <#installation-with-pipx>`__
    -  `Post Installation Basic
       Testing <#post-installation-basic-testing>`__
 
 -  `Usage <#usage>`__
 
-   -  `Locally (system command-line) <#locally-system-command-line>`__
-   -  `Remotely (as a service –
-      Performer+Invoker) <#remotely-as-a-service----performerinvoker>`__
+   -  `Local Usage (system
+      command-line) <#local-usage-system-command-line>`__
+   -  `Remote Usage (as a service –
+      Performer+Invoker) <#remote-usage-as-a-service----performerinvoker>`__
 
       -  `Performer <#performer>`__
       -  `Invoker <#invoker>`__
@@ -76,10 +94,10 @@ Table of Contents TOC
 About facter
 ============
 
-`Facter <https://www.puppet.com/docs/puppet/7/facter.html>`__ gathers
-information about the system, which can be used as variables. Facter is
-part of `puppet <https://www.puppet.com/>`__, but it can also be used
-without puppet.
+`Facter <https://www.puppet.com/docs/puppet/7/facter.html>`__ is part of
+`puppet <https://www.puppet.com/>`__, but it can also be used without
+puppet. Facter gathers information about the system as sets of
+hierarchical variables.
 
 To install facter:
 
@@ -90,24 +108,22 @@ To install facter:
 Facter is a ruby package. This bisos.facter python package provides
 access to facter information through python both locally and remotely.
 
-About BISOS — ByStar Internet Services Operating System
-=======================================================
+Part of BISOS — ByStar Internet Services Operating System
+=========================================================
 
-Layered on top of Debian, **BISOS**: (By\* Internet Services Operating
-System) is a unified and universal framework for developing both
-internet services and software-service continuums that use internet
-services. See `Bootstrapping ByStar, BISOS and
-Blee <https://github.com/bxGenesis/start>`__ for information about
-getting started with BISOS.
+| Layered on top of Debian, **BISOS**: (By\* Internet Services Operating
+  System) is a unified and universal framework for developing both
+  internet services and software-service continuums that use internet
+  services. See `Bootstrapping ByStar, BISOS and
+  Blee <https://github.com/bxGenesis/start>`__ for information about
+  getting started with BISOS.
+| **BISOS** is a foundation for **The Libre-Halaal ByStar Digital
+  Ecosystem** which is described as a cure for losses of autonomy and
+  privacy in a book titled: `Nature of
+  Polyexistentials <https://github.com/bxplpc/120033>`__
 
-Within BISOS, bisos.cmdb uses bisos.facter for Configuration Management
-DataBase purposes.
-
-*bisos.facter* as a PyCS facility is a small piece of a much bigger
-picture. **BISOS** is a foundation for **The Libre-Halaal ByStar Digital
-Ecosystem** which is described as a cure for losses of autonomy and
-privacy that we are experiencing in a book titled: `Nature of
-Polyexistentials <https://github.com/bxplpc/120033>`__
+*bisos.facter* is part of BISOS. Within BISOS, bisos.cmdb uses
+bisos.facter for Configuration Management DataBase purposes.
 
 bisos.facter is a Command-Services PyCS Facility
 ================================================
@@ -142,7 +158,7 @@ installation and usage instructions below for your own use.
 Installation
 ============
 
-The sources for the bisos.facter pip package is maintained at:
+The sources for the bisos.facter pip package are maintained at:
 https://github.com/bisos-pip/facter.
 
 The bisos.facter pip package is available at PYPI as
@@ -150,8 +166,8 @@ https://pypi.org/project/bisos.facter
 
 You can install bisos.facter with pip or pipx.
 
-With pip
---------
+Installation With pip
+---------------------
 
 If you need access to bisos.facter as a python module, you can install
 it with pip:
@@ -160,8 +176,8 @@ it with pip:
 
    pip install bisos.facter
 
-With pipx
----------
+Installation With pipx
+----------------------
 
 If you only need access to bisos.facter on command-line, you can install
 it with pipx:
@@ -192,8 +208,8 @@ After the installation, run some basic tests:
 Usage
 =====
 
-Locally (system command-line)
------------------------------
+Local Usage (system command-line)
+---------------------------------
 
 ``facter.cs`` does the equivalent of facter.
 
@@ -201,8 +217,8 @@ Locally (system command-line)
 
    bin/facter.cs
 
-Remotely (as a service – Performer+Invoker)
--------------------------------------------
+Remote Usage (as a service – Performer+Invoker)
+-----------------------------------------------
 
 You can also run:
 

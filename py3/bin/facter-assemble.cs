@@ -174,8 +174,49 @@ class examples(cs.Cmnd):
         cmnd('facter_activationStatus', comment=" # Activation Status")
         cmnd('facter_deactivate', comment=" # De-Activate")
 
+        cs.examples.menuChapter('=Full Update=')
+        cmnd('fullUpdate', comment=" # Create Performer SAP")
 
         return(cmndOutcome)
+
+####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "fullUpdate" :comment "" :extent "verify" :ro "cli" :parsMand "" :parsOpt "" :argsMin 0 :argsMax 0 :pyInv ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<fullUpdate>>  =verify= ro=cli   [[elisp:(org-cycle)][| ]]
+#+end_org """
+class fullUpdate(cs.Cmnd):
+    cmndParamsMandatory = [ ]
+    cmndParamsOptional = [ ]
+    cmndArgsLen = {'Min': 0, 'Max': 0,}
+
+    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
+    def cmnd(self,
+             rtInv: cs.RtInvoker,
+             cmndOutcome: b.op.Outcome,
+    ) -> b.op.Outcome:
+
+        failed = b_io.eh.badOutcome
+        callParamsDict = {}
+        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, None).isProblematic():
+            return failed(cmndOutcome)
+####+END:
+        if self.cmndDocStr(f""" #+begin_org
+** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  A starting point command.
+        #+end_org """): return(cmndOutcome)
+
+        self.captureRunStr(""" #+begin_org
+#+begin_src sh :results output :session shared
+  facter.cs -i factName networking.primary os.distro.id
+#+end_src
+#+RESULTS:
+: [{'networking.primary': 'eno1'}, {'os.distro.id': 'Debian'}]
+        #+end_org """)
+
+        if b.subProc.WOpW(invedBy=self, log=1).bash(
+                f"""echo NOTYET, fullUpdate will create the Performer SAP""",
+        ).isProblematic():  return(b_io.eh.badOutcome(cmndOutcome))
+
+        return cmndOutcome
+
 
 ####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "facter_activate" :comment "" :extent "verify" :ro "cli" :parsMand "" :parsOpt "" :argsMin 0 :argsMax 0 :pyInv ""
 """ #+begin_org
