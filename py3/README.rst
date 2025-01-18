@@ -2,26 +2,9 @@
 bisos.facter: Adoption and adaptation of facter to Python and as Command-Services
 =================================================================================
 
-:Author: Mohsen BANAN
-:Date:   <2024-02-19 Mon 16:27>
-
 .. contents::
    :depth: 3
 ..
-
-| ``Blee Panel Controls``: `Show-All <elisp:(show-all)>`__ \|
-  `Overview <elisp:(org-shifttab)>`__ \|
-  `Content <elisp:(progn (org-shifttab) (org-content))>`__ \|
-  `(1) <elisp:(delete-other-windows)>`__ \|
-  `S&Q <elisp:(progn (save-buffer) (kill-buffer))>`__ \|
-  `Save <elisp:(save-buffer)>`__ \| `Quit <elisp:(kill-buffer)>`__ \|
-  `Bury <elisp:(bury-buffer)>`__
-| ``Panel Links``: `Blee Panel <../_nodeBase_/fullUsagePanel-en.org>`__
-  \| `Github
-  Panel <./py3/panels/bisos.facter/_nodeBase_/fullUsagePanel-en.org>`__
-  ``See Also``: `At PYPI <https://pypi.org/project/bisos.facter>`__ \|
-  `bisos.PyCS <https://github.com/bisos-pip/pycs>`__ \|
-  `bisos.cmdb <https://github.com/bisos-pip/cmdb>`__
 
 Overview
 ========
@@ -40,12 +23,21 @@ operations using `RPyC <https://github.com/tomerfiliba-org/rpyc>`__).
 Use of bisos.facter as a service, can facilitate central management of
 multiple systems.
 
+Package Documentation At Github
+===============================
+
+The information below is a subset of the full of documentation for this
+bisos-pip package. More complete documentation is available at:
+https://github.com/bisos-pip/capability-cs
+
 .. _table-of-contents:
 
 Table of Contents TOC
 =====================
 
 -  `Overview <#overview>`__
+-  `Package Documentation At
+   Github <#package-documentation-at-github>`__
 -  `About facter <#about-facter>`__
 -  `Part of BISOS — ByStar Internet Services Operating
    System <#part-of-bisos-----bystar-internet-services-operating-system>`__
@@ -75,13 +67,13 @@ Table of Contents TOC
 -  `bisos.facter as an Example of Command Services (PyCS) – Code
    Walkthrough <#bisosfacter-as-an-example-of-command-services-pycs----code-walkthrough>`__
 
-   -  `./py3/bin/facter.cs (./bin/roPerf-facter.cs
+   -  `./bin/facter.cs (./bin/roPerf-facter.cs
       ./bin/roInv-facter.cs) <#py3binfactercs--binroperf-factercs--binroinv-factercs>`__
-   -  `./py3/bisos/facter/facter.py (COMEEGA
+   -  `./bisos/facter/facter.py (COMEEGA
       Python) <#py3bisosfacterfacterpy-comeega-python>`__
-   -  `./py3/bisos/facter/facter\ conv.py (Conventional
+   -  `./bisos/facter/facter\ conv.py (Conventional
       Python) <#py3bisosfacterfacter_convpy-conventional-python>`__
-   -  `./py3/bisos/facter/facter\ csu.py <#py3bisosfacterfacter_csupy>`__
+   -  `./bisos/facter/facter\ csu.py <#py3bisosfacterfacter_csupy>`__
    -  `PyPi and Github Packaging <#pypi-and-github-packaging>`__
 
 -  `Documentation and Blee-Panels <#documentation-and-blee-panels>`__
@@ -246,8 +238,8 @@ Org-Mode Enhanced Emacs Generalized Authorship) –
 https://github.com/bx-blee/comeega.
 
 The primary API for bisos.facter is
-`file:./py3/bisos/facter/facter_csu.py <./py3/bisos/facter/facter_csu.py>`__.
-It is self documented in COMEEGA.
+`file:./bisos/facter/facter_csu.py <./bisos/facter/facter_csu.py>`__. It
+is self documented in COMEEGA.
 
 bisos.facter as an Example of Command Services (PyCS) – Code Walkthrough
 ========================================================================
@@ -255,44 +247,42 @@ bisos.facter as an Example of Command Services (PyCS) – Code Walkthrough
 An overview of the relevant files of the bisos.facter package is
 provided below.
 
-./py3/bin/facter.cs (./bin/roPerf-facter.cs ./bin/roInv-facter.cs)
-------------------------------------------------------------------
+./bin/facter.cs (./bin/roPerf-facter.cs ./bin/roInv-facter.cs)
+--------------------------------------------------------------
 
-The file `file:./py3/bin/facter.cs <./py3/bin/facter.cs>`__ is a CS-MU
+The file `file:./bin/facter.cs <./bin/facter.cs>`__ is a CS-MU
 (Command-Services Multi-Unit). It is fundamentally a boiler plate that
 has the main framework org-mode Dynamic Block and which imports its
 commands from bisos.facter.facter\ :sub:`csu` and
 bisos.banna.bannaPortNu modules.
 
-./py3/bisos/facter/facter.py (COMEEGA Python)
----------------------------------------------
+./bisos/facter/facter.py (COMEEGA Python)
+-----------------------------------------
 
-The file
-`file:./py3/bisos/facter/facter.py <./py3/bisos/facter/facter.py>`__
+The file `file:./bisos/facter/facter.py <./bisos/facter/facter.py>`__
 includes functions that run a sub-process with "facter –json", obtain
 the json result as a collection of namedtuples. This can then be
 subjected to caching and then retrieved based on string representations
 mapping to namedtuples.
 
-./py3/bisos/facter/facter\ :sub:`conv`.py (Conventional Python)
----------------------------------------------------------------
+./bisos/facter/facter\ :sub:`conv`.py (Conventional Python)
+-----------------------------------------------------------
 
 The file
-`file:./py3/bisos/facter/facter_conv.py <./py3/bisos/facter/facter_conv.py>`__
-is same as
-`file:./py3/bisos/facter/facter.py <./py3/bisos/facter/facter.py>`__
+`file:./bisos/facter/facter_conv.py <./bisos/facter/facter_conv.py>`__
+is same as `file:./bisos/facter/facter.py <./bisos/facter/facter.py>`__
 without use of COMEEGA. Without Emacs, it is not easy to read the
 COMEEGA files and some people prefer not to use or know about COMEEGA.
 In such situations facter\ :sub:`conv`.py can be considered as
 conventional sample code.
 
-./py3/bisos/facter/facter\ :sub:`csu`.py
-----------------------------------------
+./bisos/facter/facter\ :sub:`csu`.py
+------------------------------------
 
 The file
-`file:./py3/bisos/facter/facter_csu.py <./py3/bisos/facter/facter_csu.py>`__
-is a CS-U (Command-Services Unit). It includes definitions of commands
-and their CLI params and args.
+`file:./bisos/facter/facter_csu.py <./bisos/facter/facter_csu.py>`__ is
+a CS-U (Command-Services Unit). It includes definitions of commands and
+their CLI params and args.
 
 Implementation of commands in facter\ :sub:`csu`.py rely on facilities
 provided in facter.py.
@@ -302,15 +292,15 @@ PyPi and Github Packaging
 
 All bisos-pip repos in the https://github.com/bisos-pip github
 organization follow the same structure. They all have
-`file:./py3/setup.py <./py3/setup.py>`__ files that are driven by
-`file:./py3/pypiProc.sh <./py3/pypiProc.sh>`__.
+`file:./setup.py <./setup.py>`__ files that are driven by
+`file:./pypiProc.sh <./pypiProc.sh>`__.
 
-The `file:./py3/setup.py <./py3/setup.py>`__ file is a series of
-consistent org-mode Dynamic Block that automatically determine the
-module name and the installed and pypi revisions.
+The `file:./setup.py <./setup.py>`__ file is a series of consistent
+org-mode Dynamic Block that automatically determine the module name and
+the installed and pypi revisions.
 
-The `file:./py3/pypiProc.sh <./py3/pypiProc.sh>`__ uses setup.py and
-pushes to pypi when desired and allows for isolated testing using pipx.
+The `file:./pypiProc.sh <./pypiProc.sh>`__ uses setup.py and pushes to
+pypi when desired and allows for isolated testing using pipx.
 
 Documentation and Blee-Panels
 =============================
@@ -328,7 +318,7 @@ bisos.facter Blee-Panles are in ./panels directory. From within Blee and
 BISOS these panles are accessible under the Blee "Panels" menu.
 
 See
-`file:./py3/panels/_nodeBase_/fullUsagePanel-en.org <./py3/panels/_nodeBase_/fullUsagePanel-en.org>`__
+`file:./panels/_nodeBase_/fullUsagePanel-en.org <./panels/_nodeBase_/fullUsagePanel-en.org>`__
 for a starting point.
 
 Support

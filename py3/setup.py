@@ -64,7 +64,6 @@ requires = [
 "bisos.capability",
 "bisos.common",
 "bisos.debian",
-"from",
 ]
 ####+END:
 
