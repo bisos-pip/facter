@@ -16,17 +16,13 @@
 from bisos import b
 
 from bisos.debian import systemdSeed
+from bisos.basics import pathPlus
 
-def sysdUnitFileFunc():
+def sysdUnitFileFunc() -> str | None:
     """Produce the unit file as a string. execPath can be different for testing vs stationable."""
 
-    # Sometimes we may be running this script in the cwd -- shutil.which  does not do the equivalent of -a
-    cmndOutcome = b.subProc.WOpW(invedBy=None, log=0).bash(
-                f"""which -a roPerf-facter.cs | grep -v '\./roPerf-facter.cs' | head -1""",
-    )
-    if cmndOutcome.isProblematic():  return(b_io.eh.badOutcome(cmndOutcome))
-    execPath = cmndOutcome.stdout.strip()
-    # print(execPath)
+    if ( execPath := pathPlus.whichBinPath("roPerf-facter.cs",)
+    ) is None: return None
 
     templateStr = f"""
 [Unit]
@@ -34,7 +30,7 @@ Description=Facter Service
 Documentation=man:facter(1)
 
 [Service]
-ExecStart={execPath} -v 20 --svcName="svcFacter"  -i csPerformer
+ExecStart={execPath} -v 20 --svcName="svcFacter" -i csPerformer
 Restart=always
 RestartSec=60
 

@@ -75,7 +75,8 @@ scripts = [
 'bin/facter-binsPrep.cs',
 'bin/facter-cbs-is-p-sysd.cs',
 'bin/facter.cs',
-'bin/facter-perfSysd.cs',
+'bin/facter-perfSysd-obsolete.cs',
+'bin/facter-roPerf-sysd.cs',
 'bin/roInv-facter.cs',
 'bin/roPerf-facter.cs',
 ]

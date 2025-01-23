@@ -30,12 +30,12 @@ cba_seed.setup(
 )
 
 
-sysdUnitsList = [
-    cba_sysd_seed.sysdUnit("facter")
+sysdUnitsListFacter = [
+    cba_sysd_seed.sysdUnit("facter", "facter-roPerf-sysd.cs")
 ]
 
 cba_sysd_seed.setup(
-    sysdUnitsList=sysdUnitsList,
+    sysdUnitsList=sysdUnitsListFacter,
 )
 
 
