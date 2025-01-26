@@ -43,7 +43,7 @@ def longDescription():
 # b:py3:pypi:setup/version Arguments  :forSys t :forPyPi t :constant "666"
 ####+BEGIN: b:py3:pypi:setup/version :comment "Auto Detected"
 
-# ./pypiUploadVer DID NOT exist -- forPypiVersion=0.98 -- forSysVersion=0.92 -- constant=NA
+# ./pypiUploadVer DID NOT exist -- forPypiVersion=1.00 -- forSysVersion=0.92 -- constant=NA
 def pkgVersion():
         return '0.92'
 
@@ -52,7 +52,7 @@ def pkgVersion():
 # b:py3:pypi:setup/requires :extras ; :requirements "requirements.txt" (bring here requirements.txt)
 ####+BEGIN: b:py3:pypi:setup/requires :extras ()
 
-requires = [
+requires = [ 
 "blee",
 "blee.csPlayer",
 "blee.icmPlayer",
@@ -70,7 +70,7 @@ requires = [
 # b:py3:pypi:setup/scripts :comment
 ####+BEGIN: b:py3:pypi:setup/scripts :comment ""
 
-scripts = [
+scripts = [ 
 'bin/facter-assemble.cs',
 'bin/facter-binsPrep.cs',
 'bin/facter-cbs-is-p-sysd.cs',
@@ -85,7 +85,7 @@ scripts = [
 # b:py3:pypi:setup/dataFiles :comment
 ####+BEGIN: b:py3:pypi:setup/dataFiles :comment "Instead of ./MANIFEST.in or in pyproject.toml"
 
-data_files = [
+data_files = [ 
 (' ',  ['lh-agpl3-LICENSE.txt', '_description.org', 'README.rst']),
 ]
 ####+END:
@@ -94,7 +94,7 @@ data_files = [
 ####+BEGIN: b:py3:pypi:setup/funcArgs :comment "defaults to --auto--"
 
 setuptools.setup(
-    name=pkgName(),  # bisos.facter
+    name=pkgName(),  # 'bisos.facter'
     version=pkgVersion(),
     packages=setuptools.find_packages(),
     scripts=scripts,
@@ -105,11 +105,9 @@ setuptools.setup(
     author_email='libre@mohsen.1.banan.byname.net',
     maintainer='Mohsen Banan',
     maintainer_email='libre@mohsen.1.banan.byname.net',
-    url='http://www.by-star.net/PLPC/180047',
     license='AGPL',
     description=description(),
     long_description=longDescription(),
-    download_url='http://www.by-star.net/PLPC/180047',
     install_requires=requires,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
