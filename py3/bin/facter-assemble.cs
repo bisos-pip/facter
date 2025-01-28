@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """ #+begin_org
@@ -256,13 +256,7 @@ class bposActivation(cs.Cmnd):
 : Cmnd -- No Results
         #+end_org """)
 
-        if b.subProc.WOpW(invedBy=self, log=1).bash(
-                f"""bpoActivate.sh -p privacy="priv" -i bpoActivate pmb_clusterNeda-boxes""",
-        ).isProblematic():  return(b_io.eh.badOutcome(cmndOutcome))
-
-        if b.subProc.WOpW(invedBy=self, log=1).bash(
-                f"""bpoActivate.sh -p privacy="priv" -i bpoActivate pmc_clusterNeda-containers""",
-        ).isProblematic():  return(b_io.eh.badOutcome(cmndOutcome))
+        print("bposActivation is not applicable.")
 
         return cmndOutcome
 
@@ -297,22 +291,12 @@ class roPerfSapCreate(cs.Cmnd):
 #+RESULTS:
 #+begin_example
 ,** cmnd= svcPerfSiteRegistrars.cs --svcName="svcSiteRegistrars" --perfName="svcSiteRegistrars" --rosmu="svcPerfSiteRegistrars.cs"  -i perf_sapCreate
-FileParam.writeTo path=/bisos/var/cs/ro/sap/svcPerfSiteRegistrars.cs/svcSiteRegistrars/svcSiteRegistrars/rpyc/perfIpAddr/value value=localhost
-FileParam.writeTo path=/bisos/var/cs/ro/sap/svcPerfSiteRegistrars.cs/svcSiteRegistrars/svcSiteRegistrars/rpyc/svcName/value value=svcSiteRegistrars
-FileParam.writeTo path=/bisos/var/cs/ro/sap/svcPerfSiteRegistrars.cs/svcSiteRegistrars/svcSiteRegistrars/rpyc/perfPortNu/value value=22222003
-FileParam.writeTo path=/bisos/var/cs/ro/sap/svcPerfSiteRegistrars.cs/svcSiteRegistrars/svcSiteRegistrars/rpyc/accessControl/value value=placeholder
-FileParam.writeTo path=/bisos/var/cs/ro/sap/svcPerfSiteRegistrars.cs/svcSiteRegistrars/svcSiteRegistrars/rpyc/rosmuControl/value value=bisos
-FileParam.writeTo path=/bisos/var/cs/ro/sap/svcPerfSiteRegistrars.cs/svcSiteRegistrars/svcSiteRegistrars/rpyc/perfName/value value=svcSiteRegistrars
-FileParam.writeTo path=/bisos/var/cs/ro/sap/svcPerfSiteRegistrars.cs/svcSiteRegistrars/svcSiteRegistrars/rpyc/perfModel/value value=rpyc
-FileParam.writeTo path=/bisos/var/cs/ro/sap/svcPerfSiteRegistrars.cs/svcSiteRegistrars/svcSiteRegistrars/rpyc/rosmu/value value=svcPerfSiteRegistrars.cs
-FileParam.writeTo path=/bisos/var/cs/ro/sap/svcPerfSiteRegistrars.cs/svcSiteRegistrars/svcSiteRegistrars/rpyc/rosmuSel/value value=default
-/bisos/var/cs/ro/sap/svcPerfSiteRegistrars.cs/svcSiteRegistrars/svcSiteRegistrars/rpyc
 Cmnd -- No Results
 #+end_example
         #+end_org """)
 
         if b.subProc.WOpW(invedBy=self, log=1).bash(
-                f"""svcPerfSiteRegistrars.cs --svcName="svcSiteRegistrars" --perfName="svcSiteRegistrars" --rosmu="svcPerfSiteRegistrars.cs"  -i perf_sapCreate""",
+                f"""roPerf-facter.cs --svcName="svcFacter" --perfName="me" --rosmu="roPerf-facter.cs"  -i perf_sapCreate""",
         ).isProblematic():  return(b_io.eh.badOutcome(cmndOutcome))
 
         return cmndOutcome

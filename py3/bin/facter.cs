@@ -164,7 +164,8 @@ class examples(cs.Cmnd):
         #+end_org """)
 
         cs.examples.myName(cs.G.icmMyName(), cs.G.icmMyFullName())
-        cs.examples.commonBrief(excludeRoExamples=False)
+        #cs.examples.commonBrief(excludeRoExamples=False)
+        cs.examples.commonBrief()
 
         if ro.csMuIsPerformer() is True:
             facter_csu.roPerf_examples_csu().pyCmnd(sectionTitle="default")
