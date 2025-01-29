@@ -3,7 +3,7 @@
 ####+BEGIN: b:prog:file/particulars :authors ("./inserts/authors-mb.org")
 """ #+begin_org
 * *[[elisp:(org-cycle)][| Particulars |]]* :: Authors, version
-** This File: /bisos/git/bxRepos/bisos-pip/binsprep/py3/bin/exmpl-binsPerp.cs
+** This File: /bisos/git/auth/bxRepos/bisos-pip/facter/py3/bin/facter-binsPrep.cs
 ** Authors: Mohsen BANAN, http://mohsen.banan.1.byname.net/contact
 #+end_org """
 ####+END:
@@ -19,15 +19,15 @@ binsprepSeed.setup(
     aptPkgsList=aptPkgsList,
 )
 
-####+BEGIN: b:py3:cs:seed/withWhich :seedName "seedBinsPrep.cs"
+####+BEGIN: b:py3:cs:seed/withWhich :seedName "/bisos/venv/py3/bisos3/bin/seedBinsPrep.cs"
 """ #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  seed       [[elisp:(outline-show-subtree+toggle)][||]] <<seedBinsPrep.cs>>   [[elisp:(org-cycle)][| ]]
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  seed       [[elisp:(outline-show-subtree+toggle)][||]] <</bisos/venv/py3/bisos3/bin/seedBinsPrep.cs>>   [[elisp:(org-cycle)][| ]]
 #+end_org """
 import shutil
 import os
 import sys
 
-seedName = 'seedBinsPrep.cs'
+seedName = '/bisos/venv/py3/bisos3/bin/seedBinsPrep.cs'
 seedPath = shutil.which(seedName)
 if seedPath is None:
     print(f'sys.exit() --- which found nothing for {seedName} --- Aborting')
