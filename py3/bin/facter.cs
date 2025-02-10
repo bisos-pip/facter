@@ -92,13 +92,13 @@ import collections
 (setq  b:py:cs:csuList
   (list
    "bisos.b.cs.ro"
-   "blee.csPlayer.bleep"
+   "bisos.csPlayer.bleep"
    "bisos.facter.facter_csu"
    "bisos.banna.bannaPortNu"
  ))
 #+END_SRC
 #+RESULTS:
-| bisos.b.cs.ro | blee.csPlayer.bleep | bisos.facter.facter_csu | bisos.banna.bannaPortNu |
+| bisos.b.cs.ro | bisos.csPlayer.bleep | bisos.facter.facter_csu | bisos.banna.bannaPortNu |
 #+end_org """
 
 ####+BEGIN: b:py3:cs:framework/csuListProc :pyImports t :csuImports t :csuParams t :csmuParams nil
@@ -107,12 +107,12 @@ import collections
 #+end_org """
 
 from bisos.b.cs import ro
-from blee.csPlayer import bleep
+from bisos.csPlayer import bleep
 from bisos.facter import facter_csu
 from bisos.banna import bannaPortNu
 
 
-csuList = [ 'bisos.b.cs.ro', 'blee.csPlayer.bleep', 'bisos.facter.facter_csu', 'bisos.banna.bannaPortNu', ]
+csuList = [ 'bisos.b.cs.ro', 'bisos.csPlayer.bleep', 'bisos.facter.facter_csu', 'bisos.banna.bannaPortNu', ]
 
 g_importedCmndsModules = cs.csuList_importedModules(csuList)
 
@@ -165,14 +165,14 @@ class examples(cs.Cmnd):
 
         cs.examples.myName(cs.G.icmMyName(), cs.G.icmMyFullName())
         #cs.examples.commonBrief(excludeRoExamples=False)
-        cs.examples.commonBrief()
+        cs.examples.commonBrief(roMenu=True,)
 
         if ro.csMuIsPerformer() is True:
             facter_csu.roPerf_examples_csu().pyCmnd(sectionTitle="default")
         elif ro.csMuIsInvoker() is True:
             facter_csu.roInv_examples_csu().pyCmnd(sectionTitle="default")
         elif ro.csMuIsDirect() is True:
-            bleep.examples_icmBasic()
+            bleep.examples_csBasic()
             facter_csu.examples_csu().pyCmnd()
         else:
             b_io.eh.critical_oops()

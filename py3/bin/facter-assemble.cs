@@ -94,13 +94,13 @@ cba_assemble.cbaAssemble.assemblerType = "roPerfCs+DataBpos"
 (setq  b:py:cs:csuList
   (list
    "bisos.b.cs.ro"
-   "blee.csPlayer.bleep"
+   "bisos.csPlayer.bleep"
    ;; "bisos.facter.facter_csu"
    "bisos.banna.bannaPortNu"
  ))
 #+END_SRC
 #+RESULTS:
-| bisos.b.cs.ro | blee.csPlayer.bleep | bisos.banna.bannaPortNu |
+| bisos.b.cs.ro | bisos.csPlayer.bleep | bisos.banna.bannaPortNu |
 #+end_org """
 
 ####+BEGIN: b:py3:cs:framework/csuListProc :pyImports t :csuImports t :csuParams t :csmuParams nil
@@ -109,11 +109,11 @@ cba_assemble.cbaAssemble.assemblerType = "roPerfCs+DataBpos"
 #+end_org """
 
 from bisos.b.cs import ro
-from blee.csPlayer import bleep
+from bisos.csPlayer import bleep
 from bisos.banna import bannaPortNu
 
 
-csuList = [ 'bisos.b.cs.ro', 'blee.csPlayer.bleep', 'bisos.banna.bannaPortNu', ]
+csuList = [ 'bisos.b.cs.ro', 'bisos.csPlayer.bleep', 'bisos.banna.bannaPortNu', ]
 
 g_importedCmndsModules = cs.csuList_importedModules(csuList)
 
