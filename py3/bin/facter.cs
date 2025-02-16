@@ -164,7 +164,6 @@ class examples(cs.Cmnd):
         #+end_org """)
 
         cs.examples.myName(cs.G.icmMyName(), cs.G.icmMyFullName())
-        #cs.examples.commonBrief(excludeRoExamples=False)
         cs.examples.commonBrief(roMenu=True,)
 
         if ro.csMuIsPerformer() is True:
