@@ -296,7 +296,7 @@ Cmnd -- No Results
         #+end_org """)
 
         if b.subProc.WOpW(invedBy=self, log=1).bash(
-                f"""/bisos/venv/py3/bisos3/bin/roPerf-facter.cs --svcName="svcFacter" --perfName="me" --rosmu="roPerf-facter.cs"  -i perf_sapCreate""",
+                f"""facter-roPerf.cs --svcName="svcFacter" --perfName="me" --rosmu="facter-roPerf.cs"  -i perf_sapCreate""",
         ).isProblematic():  return(b_io.eh.badOutcome(cmndOutcome))
 
         return cmndOutcome

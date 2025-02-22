@@ -21,7 +21,7 @@ from bisos.basics import pathPlus
 def sysdUnitFileFunc() -> str | None:
     """Produce the unit file as a string. execPath can be different for testing vs stationable."""
 
-    if ( execPath := pathPlus.whichBinPath("roPerf-facter.cs",)
+    if ( execPath := pathPlus.whichBinPath("facter-roPerf.cs",)
     ) is None: return None
 
     templateStr = f"""

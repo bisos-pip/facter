@@ -42,7 +42,7 @@ More complete documentation is available at: https://github.com/bisos-pip/capabi
     - [[#invoker][Invoker]]
   - [[#use-by-python-script][Use by python script]]
 - [[#bisosfacter-as-an-example-of-command-services-pycs----code-walkthrough][bisos.facter as an Example of Command Services (PyCS) -- Code Walkthrough]]
-  - [[#py3binfactercs--binroperf-factercs--binroinv-factercs][./bin/facter.cs  (./bin/roPerf-facter.cs  ./bin/roInv-facter.cs)]]
+  - [[#py3binfactercs--binfacter-roperfcs--binfacter-roinvcs][./bin/facter.cs  (./bin/facter-roPerf.cs  ./bin/facter-roInv.cs)]]
   - [[#py3bisosfacterfacterpy-comeega-python][./bisos/facter/facter.py (COMEEGA Python)]]
   - [[#py3bisosfacterfacter_convpy-conventional-python][./bisos/facter/facter_conv.py (Conventional Python)]]
   - [[#py3bisosfacterfacter_csupy][./bisos/facter/facter_csu.py]]
@@ -135,10 +135,10 @@ pipx install bisos.facter
 
 The following commands are made available:
 - facter.cs
-- roInv-facter.cs
-- roPerf-facter.cs
+- facter-roInv.cs
+- facter-roPerf.cs
 
-These are all one file with 3 names. _roInv-facter.cs_ and _roPerf-facter.cs_ are sym-links to _facter.cs_
+These are all one file with 3 names. _facter-roInv.cs_ and _facter-roPerf.cs_ are sym-links to _facter.cs_
 
 ** Post Installation Basic Testing
 
@@ -170,13 +170,13 @@ You can also run:
 Invoke performer as:
 
 #+begin_src bash
-bin/roPerf-facter.cs
+bin/facter-roPerf.cs
 #+end_src
 
 *** Invoker
 
 #+begin_src bash
-bin/roInv-facter.cs
+bin/facter-roInv.cs
 #+end_src
 
 ** Use by python script
@@ -189,7 +189,7 @@ The primary API for bisos.facter is [[file:./bisos/facter/facter_csu.py]]. It is
 
 An overview of the relevant files of the bisos.facter package is provided below.
 
-** ./bin/facter.cs  (./bin/roPerf-facter.cs  ./bin/roInv-facter.cs)
+** ./bin/facter.cs  (./bin/facter-roPerf.cs  ./bin/facter-roInv.cs)
 
 The file [[file:./bin/facter.cs]] is a CS-MU (Command-Services Multi-Unit).
 It is fundamentally a boiler plate that has the main framework org-mode Dynamic Block and

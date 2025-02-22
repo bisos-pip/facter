@@ -142,7 +142,7 @@ class ConfigFile_sysdFacter(configFile.ConfigFile):
     ) -> str:
         """ #+begin_org
 *** [[elisp:(org-cycle)][| DocStr| ]]  Returns string NOTYET
-ExecStart=/usr/bin/stdbuf -i0 -o0 -e0 /bisos/venv/py3/dev-bisos3/bin/roPerf-facter.cs -v 20 --svcName="svcFacter"  -i csPerformer
+ExecStart=/usr/bin/stdbuf -i0 -o0 -e0 /bisos/venv/py3/bisos3/bin/facter-roPerf.cs -v 20 --svcName="svcFacter"  -i csPerformer
         #+end_org """
         templateStr = """
 [Unit]
@@ -150,7 +150,7 @@ Description=Facter Service
 Documentation=man:facter(1)
 
 [Service]
-ExecStart=/bisos/venv/py3/dev-bisos3/bin/roPerf-facter.cs -v 20 --svcName="svcFacter"  -i csPerformer
+ExecStart=/bisos/venv/py3/bisos3/bin/facter-roPerf.cs -v 20 --svcName="svcFacter"  -i csPerformer
 Restart=always
 RestartSec=60
 
@@ -298,7 +298,7 @@ class sysdCmndFacter(cs.Cmnd):
             b_io.tm.here(f"configFilePath")
 
         if b.subProc.Op(outcome=cmndOutcome, log=1).bash(
-f"""/bisos/venv/py3/dev-bisos3/bin/python3 /bisos/git/auth/bxRepos/bisos-pip/facter/py3/bin/roPerf-facter.cs --svcName="svcFacter"  -i csPerformer""",
+f"""/bisos/venv/py3/dev-bisos3/bin/python3 /bisos/git/auth/bxRepos/bisos-pip/facter/py3/bin/facter-roPerf.cs --svcName="svcFacter"  -i csPerformer""",
         ).isProblematic():  return(b_io.eh.badOutcome(cmndOutcome))
 
         return cmndOutcome.set(

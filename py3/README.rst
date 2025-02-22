@@ -67,8 +67,8 @@ Table of Contents TOC
 -  `bisos.facter as an Example of Command Services (PyCS) – Code
    Walkthrough <#bisosfacter-as-an-example-of-command-services-pycs----code-walkthrough>`__
 
-   -  `./bin/facter.cs (./bin/roPerf-facter.cs
-      ./bin/roInv-facter.cs) <#py3binfactercs--binroperf-factercs--binroinv-factercs>`__
+   -  `./bin/facter.cs (./bin/facter-roPerf.cs
+      ./bin/facter-roInv.cs) <#py3binfactercs--binfacter-roperfcs--binfacter-roinvcs>`__
    -  `./bisos/facter/facter.py (COMEEGA
       Python) <#py3bisosfacterfacterpy-comeega-python>`__
    -  `./bisos/facter/facter\ conv.py (Conventional
@@ -181,11 +181,11 @@ it with pipx:
 The following commands are made available:
 
 -  facter.cs
--  roInv-facter.cs
--  roPerf-facter.cs
+-  facter-roInv.cs
+-  facter-roPerf.cs
 
-These are all one file with 3 names. *roInv-facter.cs* and
-*roPerf-facter.cs* are sym-links to *facter.cs*
+These are all one file with 3 names. *facter-roInv.cs* and
+*facter-roPerf.cs* are sym-links to *facter.cs*
 
 Post Installation Basic Testing
 -------------------------------
@@ -221,14 +221,14 @@ Invoke performer as:
 
 .. code:: bash
 
-   bin/roPerf-facter.cs
+   bin/facter-roPerf.cs
 
 Invoker
 ~~~~~~~
 
 .. code:: bash
 
-   bin/roInv-facter.cs
+   bin/facter-roInv.cs
 
 Use by python script
 --------------------
@@ -247,7 +247,7 @@ bisos.facter as an Example of Command Services (PyCS) – Code Walkthrough
 An overview of the relevant files of the bisos.facter package is
 provided below.
 
-./bin/facter.cs (./bin/roPerf-facter.cs ./bin/roInv-facter.cs)
+./bin/facter.cs (./bin/facter-roPerf.cs ./bin/facter-roInv.cs)
 --------------------------------------------------------------
 
 The file `file:./bin/facter.cs <./bin/facter.cs>`__ is a CS-MU

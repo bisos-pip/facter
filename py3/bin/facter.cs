@@ -29,7 +29,7 @@
 ####+BEGIN: b:prog:file/particulars :authors ("./inserts/authors-mb.org")
 """ #+begin_org
 * *[[elisp:(org-cycle)][| Particulars |]]* :: Authors, version
-** This File: /bisos/git/bxRepos/bisos-pip/facter/py3/bin/roPerf-facter.cs
+** This File: /l/pip/facter/py3/bin/facter.cs
 ** Authors: Mohsen BANAN, http://mohsen.banan.1.byname.net/contact
 #+end_org """
 ####+END:
@@ -39,10 +39,10 @@
 * *[[elisp:(org-cycle)][| Particulars-csInfo |]]*
 #+end_org """
 import typing
-csInfo: typing.Dict[str, typing.Any] = { 'moduleName': ['roPerf-facter'], }
-csInfo['version'] = '202403273209'
+csInfo: typing.Dict[str, typing.Any] = { 'moduleName': ['facter'], }
+csInfo['version'] = '202502215707'
 csInfo['status']  = 'inUse'
-csInfo['panel'] = 'roPerf-facter-Panel.org'
+csInfo['panel'] = 'facter-Panel.org'
 csInfo['groupingType'] = 'IcmGroupingType-pkged'
 csInfo['cmndParts'] = 'IcmCmndParts[common] IcmCmndParts[param]'
 ####+END:

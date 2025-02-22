@@ -105,91 +105,91 @@ Last Executed at: 202409-10-13:35:28  by: bystar on: HSS-1013
 * /[[elisp:(beginning-of-buffer)][|^]]  [[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]] [[elisp:(delete-other-windows)][|1]]/
 * [[elisp:(show-all)][(>]]  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_  _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_     [[elisp:(outline-show-subtree+toggle)][| _Service --- Remote Operations Invoker_: |]] <<ServiceInvoker>> RO-Invoker  [[elisp:(org-shifttab)][<)]] E|
 ####+END
-####+BEGIN: blee:panel:icm:py:intro :outLevel 1 :sep t :folding? nil :label "CS" :icmName "roInv-facter.cs" :comment "Examples Menu" :afterComment "-- -i examples"
+####+BEGIN: blee:panel:icm:py:intro :outLevel 1 :sep t :folding? nil :label "CS" :icmName "facter-roInv.cs" :comment "Examples Menu" :afterComment "-- -i examples"
 * /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
-* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /CS/ :: [[elisp:(lsip-local-run-command "roInv-facter.cs -i examples")][roInv-facter.cs]]  [[elisp:(lsip-local-run-command "roInv-facter.cs -i visit")][visit]]  [[elisp:(lsip-local-run-command "which -a roInv-facter.cs")][which -a]]  [[elisp:(lsip-local-run-command "roInv-facter.cs -i describe")][describe]] *|*  =Examples Menu= *|*  -- -i examples [[elisp:(org-shifttab)][<)]] E|
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /CS/ :: [[elisp:(lsip-local-run-command "facter-roInv.cs -i examples")][facter-roInv.cs]]  [[elisp:(lsip-local-run-command "facter-roInv.cs -i visit")][visit]]  [[elisp:(lsip-local-run-command "which -a facter-roInv.cs")][which -a]]  [[elisp:(lsip-local-run-command "facter-roInv.cs -i describe")][describe]] *|*  =Examples Menu= *|*  -- -i examples [[elisp:(org-shifttab)][<)]] E|
 ####+END
-####+BEGIN: blee:bxPanel:runResult :outLevel 1 :sep t :command "roInv-facter.cs --svcName=svcFacter --perfName=here --rosmu=roInv-facter.cs --perfIpAddr=localhost  -i inv_sapCreate"  :results "stdout" :comment "Folded stdout" :afterComment ""
+####+BEGIN: blee:bxPanel:runResult :outLevel 1 :sep t :command "facter-roInv.cs --svcName=svcFacter --perfName=here --rosmu=facter-roInv.cs --perfIpAddr=localhost  -i inv_sapCreate"  :results "stdout" :comment "Folded stdout" :afterComment ""
 * /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
-* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]     [[elisp:(org-cycle)][| /stdout :/ |]]  [[elisp:(blee:org-update-named-dblocks-above)][D-Run]] :: [[elisp:(lsip-local-run-command "roInv-facter.cs --svcName=svcFacter --perfName=here --rosmu=roInv-facter.cs --perfIpAddr=localhost  -i inv_sapCreate")][roInv-facter.cs --svcName=svcFacter --perfName=here --rosmu=roInv-facter.cs --perfIpAddr=localhost  -i inv_sapCreate]] *|*  =Folded stdout= *|*    |
-Last Executed at: 202409-10-14:36:27  by: bystar on: HSS-1013
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]     [[elisp:(org-cycle)][| /stdout :/ |]]  [[elisp:(blee:org-update-named-dblocks-above)][D-Run]] :: [[elisp:(lsip-local-run-command "facter-roInv.cs --svcName=svcFacter --perfName=here --rosmu=facter-roInv.cs --perfIpAddr=localhost  -i inv_sapCreate")][facter-roInv.cs --svcName=svcFacter --perfName=here --rosmu=facter-roInv.cs --perfIpAddr=localhost  -i inv_sapCreate]] *|*  =Folded stdout= *|*    |
+Last Executed at: 202502-21-12:28:22  by: bystar on: HSS-1013
 ----------------------------
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc/perfIpAddr/value value=localhost
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc/svcName/value value=svcFacter
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc/perfPortNu/value value=22222004
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc/accessControl/value value=placeholder
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc/rosmuControl/value value=bisos
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc/perfName/value value=here
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc/perfModel/value value=rpyc
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc/rosmu/value value=roInv-facter.cs
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc/rosmuSel/value value=default
-/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc/perfIpAddr/value value=localhost
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc/svcName/value value=svcFacter
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc/perfPortNu/value value=22222004
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc/accessControl/value value=placeholder
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc/rosmuControl/value value=bisos
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc/perfName/value value=here
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc/perfModel/value value=rpyc
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc/rosmu/value value=facter-roInv.cs
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc/rosmuSel/value value=default
+/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc
 
 * [[elisp:(org-shifttab)][<)]] E|
 ####+END:
-####+BEGIN: blee:bxPanel:runResult :outLevel 1  :command "csRo-manage.cs --svcName=svcFacter --perfName=here --rosmu=roInv-facter.cs -i ro_fps list"  :results "stdout" :comment "Folded stdout" :afterComment ""
-* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]     [[elisp:(org-cycle)][| /stdout :/ |]]  [[elisp:(blee:org-update-named-dblocks-above)][D-Run]] :: [[elisp:(lsip-local-run-command "csRo-manage.cs --svcName=svcFacter --perfName=here --rosmu=roInv-facter.cs -i ro_fps list")][csRo-manage.cs --svcName=svcFacter --perfName=here --rosmu=roInv-facter.cs -i ro_fps list]] *|*  =Folded stdout= *|*    |
-Last Executed at: 202409-10-14:37:45  by: bystar on: HSS-1013
+####+BEGIN: blee:bxPanel:runResult :outLevel 1  :command "csRo-manage.cs --svcName=svcFacter --perfName=here --rosmu=facter-roInv.cs -i ro_fps list"  :results "stdout" :comment "Folded stdout" :afterComment ""
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]     [[elisp:(org-cycle)][| /stdout :/ |]]  [[elisp:(blee:org-update-named-dblocks-above)][D-Run]] :: [[elisp:(lsip-local-run-command "csRo-manage.cs --svcName=svcFacter --perfName=here --rosmu=facter-roInv.cs -i ro_fps list")][csRo-manage.cs --svcName=svcFacter --perfName=here --rosmu=facter-roInv.cs -i ro_fps list]] *|*  =Folded stdout= *|*    |
+Last Executed at: 202502-21-12:29:15  by: bystar on: HSS-1013
 ----------------------------
-With fpBase=/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc and cls=<class 'bisos.b.cs.ro.SapBase_FPs'> name=SapBase_FPs.
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfIpAddr
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfPortNu
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  svcName
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  accessControl
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfName
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfModel
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  rosmu
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roInv-facter.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  rosmuSel
+With fpBase=/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc and cls=<class 'bisos.b.cs.ro.SapBase_FPs'> name=SapBase_FPs.
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfIpAddr
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfPortNu
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  svcName
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  accessControl
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfName
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfModel
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  rosmu
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roInv.cs/here/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  rosmuSel
 
 * [[elisp:(org-shifttab)][<)]] E|
 ####+END:
-####+BEGIN: blee:panel:icm:py:cmnd :outLevel 1 :sep nil :folding? nil :label "roInv" :icmName "roInv-facter.cs --perfName=here -i factName networking.interfaces.lo.bindings" :comment "Invoke at perfName" :afterComment ""
-* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /roInv/ :: [[elisp:(lsip-local-run-command "roInv-facter.cs --perfName=here -i factName networking.interfaces.lo.bindings")][roInv-facter.cs --perfName=here -i factName networking.interfaces.lo.bindings]] *|*  =Invoke at perfName= *|*    [[elisp:(org-shifttab)][<)]] E|
+####+BEGIN: blee:panel:icm:py:cmnd :outLevel 1 :sep nil :folding? nil :label "roInv" :icmName "facter-roInv.cs --perfName=here -i factName networking.interfaces.lo.bindings" :comment "Invoke at perfName" :afterComment ""
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /roInv/ :: [[elisp:(lsip-local-run-command "facter-roInv.cs --perfName=here -i factName networking.interfaces.lo.bindings")][facter-roInv.cs --perfName=here -i factName networking.interfaces.lo.bindings]] *|*  =Invoke at perfName= *|*    [[elisp:(org-shifttab)][<)]] E|
 ####+END:
 ####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep t :title "Service --- Remote Operations Performer" :anchor "ServicePerformer" :extraInfo "RO-Performer"
 * /[[elisp:(beginning-of-buffer)][|^]]  [[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]] [[elisp:(delete-other-windows)][|1]]/
 * [[elisp:(show-all)][(>]]  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_  _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_     [[elisp:(outline-show-subtree+toggle)][| _Service --- Remote Operations Performer_: |]] <<ServicePerformer>> RO-Performer  [[elisp:(org-shifttab)][<)]] E|
 ####+END
-####+BEGIN: blee:panel:icm:py:intro :outLevel 1 :sep t :folding? nil :label "CS" :icmName "roPerf-facter.cs" :comment "Examples Menu" :afterComment "-- -i examples"
+####+BEGIN: blee:panel:icm:py:intro :outLevel 1 :sep t :folding? nil :label "CS" :icmName "facter-roPerf.cs" :comment "Examples Menu" :afterComment "-- -i examples"
 * /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
-* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /CS/ :: [[elisp:(lsip-local-run-command "roPerf-facter.cs -i examples")][roPerf-facter.cs]]  [[elisp:(lsip-local-run-command "roPerf-facter.cs -i visit")][visit]]  [[elisp:(lsip-local-run-command "which -a roPerf-facter.cs")][which -a]]  [[elisp:(lsip-local-run-command "roPerf-facter.cs -i describe")][describe]] *|*  =Examples Menu= *|*  -- -i examples [[elisp:(org-shifttab)][<)]] E|
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /CS/ :: [[elisp:(lsip-local-run-command "facter-roPerf.cs -i examples")][facter-roPerf.cs]]  [[elisp:(lsip-local-run-command "facter-roPerf.cs -i visit")][visit]]  [[elisp:(lsip-local-run-command "which -a facter-roPerf.cs")][which -a]]  [[elisp:(lsip-local-run-command "facter-roPerf.cs -i describe")][describe]] *|*  =Examples Menu= *|*  -- -i examples [[elisp:(org-shifttab)][<)]] E|
 ####+END
-####+BEGIN: blee:bxPanel:runResult :outLevel 1 :sep t :command "roPerf-facter.cs --svcName=svcFacter --perfName=me --rosmu=roPerf-facter.cs  -i perf_sapCreate"  :results "stdout" :comment "Folded stdout" :afterComment ""
+####+BEGIN: blee:bxPanel:runResult :outLevel 1 :sep t :command "facter-roPerf.cs --svcName=svcFacter --perfName=me --rosmu=facter-roPerf.cs  -i perf_sapCreate"  :results "stdout" :comment "Folded stdout" :afterComment ""
 * /[[elisp:(beginning-of-buffer)][|^]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]] [[elisp:(delete-other-windows)][|1]]/
-* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]     [[elisp:(org-cycle)][| /stdout :/ |]]  [[elisp:(blee:org-update-named-dblocks-above)][D-Run]] :: [[elisp:(lsip-local-run-command "roPerf-facter.cs --svcName=svcFacter --perfName=me --rosmu=roPerf-facter.cs  -i perf_sapCreate")][roPerf-facter.cs --svcName=svcFacter --perfName=me --rosmu=roPerf-facter.cs  -i perf_sapCreate]] *|*  =Folded stdout= *|*    |
-Last Executed at: 202409-10-14:31:50  by: bystar on: HSS-1013
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]     [[elisp:(org-cycle)][| /stdout :/ |]]  [[elisp:(blee:org-update-named-dblocks-above)][D-Run]] :: [[elisp:(lsip-local-run-command "facter-roPerf.cs --svcName=svcFacter --perfName=me --rosmu=facter-roPerf.cs  -i perf_sapCreate")][facter-roPerf.cs --svcName=svcFacter --perfName=me --rosmu=facter-roPerf.cs  -i perf_sapCreate]] *|*  =Folded stdout= *|*    |
+Last Executed at: 202502-21-12:00:22  by: bystar on: HSS-1013
 ----------------------------
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc/perfIpAddr/value value=localhost
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc/svcName/value value=svcFacter
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc/perfPortNu/value value=22222004
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc/accessControl/value value=placeholder
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc/rosmuControl/value value=bisos
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc/perfName/value value=me
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc/perfModel/value value=rpyc
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc/rosmu/value value=roPerf-facter.cs
-FileParam.writeTo path=/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc/rosmuSel/value value=default
-/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc/perfIpAddr/value value=localhost
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc/svcName/value value=svcFacter
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc/perfPortNu/value value=22222004
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc/accessControl/value value=placeholder
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc/rosmuControl/value value=bisos
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc/perfName/value value=me
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc/perfModel/value value=rpyc
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc/rosmu/value value=facter-roPerf.cs
+FileParam.writeTo path=/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc/rosmuSel/value value=default
+/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc
 
 * [[elisp:(org-shifttab)][<)]] E|
 ####+END:
-####+BEGIN: blee:bxPanel:runResult :outLevel 1  :command "csRo-manage.cs --svcName=svcFacter --perfName=me --rosmu=roPerf-facter.cs -i ro_fps list"  :results "stdout" :comment "Folded stdout" :afterComment ""
-* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]     [[elisp:(org-cycle)][| /stdout :/ |]]  [[elisp:(blee:org-update-named-dblocks-above)][D-Run]] :: [[elisp:(lsip-local-run-command "csRo-manage.cs --svcName=svcFacter --perfName=me --rosmu=roPerf-facter.cs -i ro_fps list")][csRo-manage.cs --svcName=svcFacter --perfName=me --rosmu=roPerf-facter.cs -i ro_fps list]] *|*  =Folded stdout= *|*    |
-Last Executed at: 202409-10-14:25:52  by: bystar on: HSS-1013
+####+BEGIN: blee:bxPanel:runResult :outLevel 1  :command "csRo-manage.cs --svcName=svcFacter --perfName=me --rosmu=facter-roPerf.cs -i ro_fps list"  :results "stdout" :comment "Folded stdout" :afterComment ""
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]     [[elisp:(org-cycle)][| /stdout :/ |]]  [[elisp:(blee:org-update-named-dblocks-above)][D-Run]] :: [[elisp:(lsip-local-run-command "csRo-manage.cs --svcName=svcFacter --perfName=me --rosmu=facter-roPerf.cs -i ro_fps list")][csRo-manage.cs --svcName=svcFacter --perfName=me --rosmu=facter-roPerf.cs -i ro_fps list]] *|*  =Folded stdout= *|*    |
+Last Executed at: 202502-21-12:01:39  by: bystar on: HSS-1013
 ----------------------------
-With fpBase=/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc and cls=<class 'bisos.b.cs.ro.SapBase_FPs'> name=SapBase_FPs.
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfIpAddr
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfPortNu
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  svcName
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  accessControl
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfName
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfModel
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  rosmu
-csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/roPerf-facter.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  rosmuSel
+With fpBase=/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc and cls=<class 'bisos.b.cs.ro.SapBase_FPs'> name=SapBase_FPs.
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfIpAddr
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfPortNu
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  svcName
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  accessControl
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfName
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  perfModel
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  rosmu
+csRo-manage.cs --fpBase="/bisos/var/cs/ro/sap/facter-roPerf.cs/me/svcFacter/rpyc" --cls="SapBase_FPs" -i fpParamGetWithName  rosmuSel
 
 * [[elisp:(org-shifttab)][<)]] E|
 ####+END:
-####+BEGIN: blee:panel:icm:py:cmnd :outLevel 1 :sep nil :folding? nil :label "roPerf" :icmName "roPerf-facter.cs --svcName=svcFacter -i csPerformer &" :comment "Start rpyc CS Service" :afterComment "in background"
-* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /roPerf/ :: [[elisp:(lsip-local-run-command "roPerf-facter.cs --svcName=svcFacter -i csPerformer &")][roPerf-facter.cs --svcName=svcFacter -i csPerformer &]] *|*  =Start rpyc CS Service= *|*  in background  [[elisp:(org-shifttab)][<)]] E|
+####+BEGIN: blee:panel:icm:py:cmnd :outLevel 1 :sep nil :folding? nil :label "roPerf" :icmName "facter-roPerf.cs --svcName=svcFacter -i csPerformer &" :comment "Start rpyc CS Service" :afterComment "in background"
+* [[elisp:(show-all)][(>]] [[elisp:(blee:menu-sel:outline:popupMenu)][+-]] [[elisp:(blee:menu-sel:navigation:popupMenu)][==]]  /roPerf/ :: [[elisp:(lsip-local-run-command "facter-roPerf.cs --svcName=svcFacter -i csPerformer &")][facter-roPerf.cs --svcName=svcFacter -i csPerformer &]] *|*  =Start rpyc CS Service= *|*  in background  [[elisp:(org-shifttab)][<)]] E|
 ####+END:
 ####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :sep t :title "Service --- RO Performer Daemon" :anchor "ServicePerfDaemon" :extraInfo "RO-PerfDaemon"
 * /[[elisp:(beginning-of-buffer)][|^]]  [[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]] [[elisp:(delete-other-windows)][|1]]/

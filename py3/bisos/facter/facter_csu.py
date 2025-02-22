@@ -332,7 +332,7 @@ SCHEDULED: <2024-03-28 Thu>
 : [{'networking.primary': 'enp1s0'}]
 
 #+begin_src sh :results output :session shared
-  roInv-facter.cs --perfName="HSS-1012" -i factName networking.primary os.distro.id
+  facter-roInv.cs --perfName="HSS-1012" -i factName networking.primary os.distro.id
 #+end_src
 #+RESULTS:
 : Performing: factName () {'cache': 'True', 'fromFile': None, 'perfName': 'HSS-1012', 'argsList': ['networking.primary', 'os.distro.id'], 'rtInv': <bisos.b.cs.rtInvoker.RtInvoker object at 0x7fe0c4de2310>, 'cmndOutcome': <bisos.b.op.Outcome object at 0x7fe0c4de2590>}

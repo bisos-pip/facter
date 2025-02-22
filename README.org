@@ -49,7 +49,7 @@ systems.
     - [[#invoker][Invoker]]
   - [[#use-by-python-script][Use by python script]]
 - [[#bisosfacter-as-an-example-of-command-services-pycs----code-walkthrough][bisos.facter as an Example of Command Services (PyCS) -- Code Walkthrough]]
-  - [[#py3binfactercs--binroperf-factercs--binroinv-factercs][./py3/bin/facter.cs  (./bin/roPerf-facter.cs  ./bin/roInv-facter.cs)]]
+  - [[#py3binfactercs--binfacter-roperfcs--binfacter-roinvcs][./py3/bin/facter.cs  (./bin/facter-roPerf.cs  ./bin/facter-roInv.cs)]]
   - [[#py3bisosfacterfacterpy-comeega-python][./py3/bisos/facter/facter.py (COMEEGA Python)]]
   - [[#py3bisosfacterfacter_convpy-conventional-python][./py3/bisos/facter/facter_conv.py (Conventional Python)]]
   - [[#py3bisosfacterfacter_csupy][./py3/bisos/facter/facter_csu.py]]
@@ -142,10 +142,10 @@ pipx install bisos.facter
 
 The following commands are made available:
 - facter.cs
-- roInv-facter.cs
-- roPerf-facter.cs
+- facter-roInv.cs
+- facter-roPerf.cs
 
-These are all one file with 3 names. _roInv-facter.cs_ and _roPerf-facter.cs_ are sym-links to _facter.cs_
+These are all one file with 3 names. _facter-roInv.cs_ and _facter-roPerf.cs_ are sym-links to _facter.cs_
 
 ** Post Installation Basic Testing
 
@@ -177,13 +177,13 @@ You can also run:
 Invoke performer as:
 
 #+begin_src bash
-bin/roPerf-facter.cs
+bin/facter-roPerf.cs
 #+end_src
 
 *** Invoker
 
 #+begin_src bash
-bin/roInv-facter.cs
+bin/facter-roInv.cs
 #+end_src
 
 ** Use by python script
@@ -196,7 +196,7 @@ The primary API for bisos.facter is [[file:./py3/bisos/facter/facter_csu.py]]. I
 
 An overview of the relevant files of the bisos.facter package is provided below.
 
-** ./py3/bin/facter.cs  (./bin/roPerf-facter.cs  ./bin/roInv-facter.cs)
+** ./py3/bin/facter.cs  (./bin/facter-roPerf.cs  ./bin/facter-roInv.cs)
 
 The file [[file:./py3/bin/facter.cs]] is a CS-MU (Command-Services Multi-Unit).
 It is fundamentally a boiler plate that has the main framework org-mode Dynamic Block and

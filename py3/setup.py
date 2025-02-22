@@ -43,7 +43,7 @@ def longDescription():
 # b:py3:pypi:setup/version Arguments  :forSys t :forPyPi t :constant "666"
 ####+BEGIN: b:py3:pypi:setup/version :comment "Auto Detected"
 
-# ./pypiUploadVer DID NOT exist -- forPypiVersion=1.17 -- forLocalVersion=0.92 -- constant=NA
+# ./pypiUploadVer DID NOT exist -- forPypiVersion=1.19 -- forLocalVersion=0.92 -- constant=NA
 def pkgVersion():
         return '0.92'
 
@@ -57,11 +57,11 @@ requires = [
 "bisos.b",
 "bisos.banna",
 "bisos.basics",
-"bisos.binsprep",
 "bisos.capability",
 "bisos.common",
 "bisos.csPlayer",
 "bisos.debian",
+"bisos.sbom",
 ]
 ####+END:
 
@@ -70,13 +70,13 @@ requires = [
 
 scripts = [
 'bin/facter-assemble.cs',
-'bin/facter-binsPrep.cs',
 'bin/facter-cbs-is-p-sysd.cs',
 'bin/facter.cs',
 'bin/facter-perfSysd-obsolete.cs',
 'bin/facter-roInv.cs',
 'bin/facter-roPerf.cs',
 'bin/facter-roPerf-sysd.cs',
+'bin/facter-sbom.cs',
 ]
 ####+END:
 
