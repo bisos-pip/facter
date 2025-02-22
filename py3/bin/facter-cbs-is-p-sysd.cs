@@ -24,7 +24,7 @@ cba_seed.setup(
     seedType="systemd",  # Extend using cba_sysd_seed.setup
     loader=None,
     #binsPrep="/bisos/venv/py3/bisos3/bin/facter-sbom.cs",
-    binsPrep="facter-sbom.cs",
+    sbom="facter-sbom.cs",
     assemble="facter-assemble.cs",
     materialize=None,
     # examplesHook=qmail_binsPrep.examples_csu,
