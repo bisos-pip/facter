@@ -18,3 +18,5 @@ aptPkgsList = [
 pkgsSeed.setup(
     aptPkgsList=aptPkgsList,
 )
+
+pkgsSeed.plantWithWhich("seedSbom.cs")
