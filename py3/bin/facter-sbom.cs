@@ -8,7 +8,7 @@
 #+end_org """
 ####+END:
 
-from bisos.sbom import pkgsSeed
+from bisos.sbom import pkgsSeed  # pkgsSeed.plantWithWhich("seedSbom.cs")
 ap = pkgsSeed.aptPkg
 
 aptPkgsList = [
@@ -18,5 +18,3 @@ aptPkgsList = [
 pkgsSeed.setup(
     aptPkgsList=aptPkgsList,
 )
-
-pkgsSeed.plantWithWhich("seedSbom.cs")
