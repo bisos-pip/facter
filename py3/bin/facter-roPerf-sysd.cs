@@ -9,11 +9,9 @@
 ####+END:
 
 """ #+begin_org
-* Panel::  [[file:/bisos/panels/bisos-apps/lcnt/lcntScreencasting/subTitles/_nodeBase_/fullUsagePanel-en.org]]
+* Panel::  [[file:/bisos/panels/bisos-core/capability/collectiveCapabilities/facterCapability/_nodeBase_/fullUsagePanel-en.org]]
 * Overview and Relevant Pointers
 #+end_org """
-
-from bisos import b
 
 from bisos.debian import systemdSeed
 from bisos.basics import pathPlus
@@ -40,7 +38,7 @@ WantedBy=default.target
     return templateStr
 
 systemdSeed.setup(
-    seedType="sysdSysUnit",  # or userUnit
+    seedType="sysdSysUnit",  # or sysdUserUnit
     sysdUnitName="facter",
     sysdUnitFileFunc=sysdUnitFileFunc,
 )
