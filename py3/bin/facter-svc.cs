@@ -91,24 +91,28 @@ import collections
 #+BEGIN_SRC emacs-lisp
 (setq  b:py:cs:csuList
   (list
-   ;; "bisos.b.cs.ro"
-   ;; "bisos.csPlayer.bleep"
+   "bisos.b.cs.ro"
+   "bisos.csPlayer.bleep"
    "bisos.facter.facter_csu"
-   ;; "bisos.banna.bannaPortNu"
+   "bisos.banna.bannaPortNu"
  ))
 #+END_SRC
 #+RESULTS:
-| bisos.facter.facter_csu |
+| bisos.b.cs.ro | bisos.csPlayer.bleep | bisos.facter.facter_csu | bisos.banna.bannaPortNu |
 #+end_org """
 
 ####+BEGIN: b:py3:cs:framework/csuListProc :pyImports t :csuImports t :csuParams t :csmuParams nil
 """ #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CsFrmWrk   [[elisp:(outline-show-subtree+toggle)][||]] ~Process CSU List~ with /1/ in csuList pyImports=t csuImports=t csuParams=t
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CsFrmWrk   [[elisp:(outline-show-subtree+toggle)][||]] =Process CSU List= with /4/ in csuList pyImports=t csuImports=t csuParams=t
 #+end_org """
 
+from bisos.b.cs import ro
+from bisos.csPlayer import bleep
 from bisos.facter import facter_csu
+from bisos.banna import bannaPortNu
 
-csuList = [ 'bisos.facter.facter_csu', ]
+
+csuList = [ 'bisos.b.cs.ro', 'bisos.csPlayer.bleep', 'bisos.facter.facter_csu', 'bisos.banna.bannaPortNu', ]
 
 g_importedCmndsModules = cs.csuList_importedModules(csuList)
 
@@ -160,10 +164,17 @@ class examples(cs.Cmnd):
         #+end_org """)
 
         cs.examples.myName(cs.G.icmMyName(), cs.G.icmMyFullName())
-        cs.examples.commonBrief()
+        cs.examples.commonBrief(roMenu=True,)
 
-        # bleep.examples_csBasic()
-        facter_csu.examples_csu().pyCmnd()
+        if ro.csMuIsPerformer() is True:
+            facter_csu.roPerf_examples_csu().pyCmnd(sectionTitle="default")
+        elif ro.csMuIsInvoker() is True:
+            facter_csu.roInv_examples_csu().pyCmnd(sectionTitle="default")
+        elif ro.csMuIsDirect() is True:
+            bleep.examples_csBasic()
+            facter_csu.examples_csu().pyCmnd()
+        else:
+            b_io.eh.critical_oops()
 
         return(cmndOutcome)
 
