@@ -1,9 +1,25 @@
 #!/bin/env python
 # -*- coding: utf-8 -*-
 
-""" #+begin_org
+import typing ; csInfo: typing.Dict[str, typing.Any] = {'category': 'csxu', 'name': 'facter.cs', 'features': ['direct',]}
+
+csInfo['summary'] = """ #+begin_org
 * ~[Summary]~ :: A =CmndSvc= for running the equivalent of facter in py and remotely with rpyc.
 #+end_org """
+
+csInfo['description'] = """ #+begin_org
+* [[elisp:(org-cycle)][| ~csInfoDescription~ |]] :: A facter equivalent
+#+end_org """
+
+""" #+begin_org
+* [[elisp:(org-cycle)][| ~DevDescription~ |]] :: [[file:/bisos/panels/bisos-core/bisos-pip/bisos.tocsModules/_nodeBase_/fullUsagePanel-en.org][BISOS Panel]]   [[elisp:(org-cycle)][| ]]
+
+** Status: In use with BISOS
+** /[[elisp:(org-cycle)][| Planned Improvements |]]/ :
+*** TODO Review Panel's Design and Evolution section.
+#+end_org """
+
+
 
 ####+BEGIN: b:py3:cs:file/dblockControls :classification "cs-mu"
 """ #+begin_org
@@ -34,12 +50,11 @@
 #+end_org """
 ####+END:
 
-####+BEGIN: b:py3:file/particulars-csInfo :status "inUse"
+####+BEGINNOT: b:py3:file/particulars-csInfo :status "inUse"
 """ #+begin_org
 * *[[elisp:(org-cycle)][| Particulars-csInfo |]]*
 #+end_org """
-import typing
-csInfo: typing.Dict[str, typing.Any] = { 'moduleName': ['facter'], }
+if 'csInfo' not in globals(): import typing ; csInfo: typing.Dict[str, typing.Any] = { 'moduleName': ['loadAs'], }
 csInfo['version'] = '202502215707'
 csInfo['status']  = 'inUse'
 csInfo['panel'] = 'facter-Panel.org'
@@ -92,13 +107,13 @@ import collections
 (setq  b:py:cs:csuList
   (list
    ;; "bisos.b.cs.ro"
-   "bisos.csPlayer.csxuFpsTo"
+   "bisos.csPlayer.csxuFps_csu"
    "bisos.facter.facter_csu"
    ;; "bisos.banna.bannaPortNu"
  ))
 #+END_SRC
 #+RESULTS:
-| bisos.csPlayer.csxuFpsTo | bisos.facter.facter_csu |
+| bisos.csPlayer.csxuFps_csu | bisos.facter.facter_csu |
 #+end_org """
 
 ####+BEGIN: b:py3:cs:framework/csuListProc :pyImports t :csuImports t :csuParams t :csmuParams nil
@@ -106,10 +121,10 @@ import collections
 *  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CsFrmWrk   [[elisp:(outline-show-subtree+toggle)][||]] ~Process CSU List~ with /2/ in csuList pyImports=t csuImports=t csuParams=t
 #+end_org """
 
-from bisos.csPlayer import csxuFpsTo
+from bisos.csPlayer import csxuFps_csu
 from bisos.facter import facter_csu
 
-csuList = [ 'bisos.csPlayer.csxuFpsTo', 'bisos.facter.facter_csu', ]
+csuList = [ 'bisos.csPlayer.csxuFps_csu', 'bisos.facter.facter_csu', ]
 
 g_importedCmndsModules = cs.csuList_importedModules(csuList)
 
@@ -163,7 +178,7 @@ class examples(cs.Cmnd):
         cs.examples.myName(cs.G.icmMyName(), cs.G.icmMyFullName())
         cs.examples.commonBrief()
 
-        csxuFpsTo.examples_csu().pyCmnd()
+        csxuFps_csu.playerMenuExamples().pyCmnd()
 
         # bleep.examples_csBasic()
         facter_csu.examples_csu().pyCmnd()
