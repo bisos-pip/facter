@@ -17,10 +17,17 @@ from bisos.debian import systemdSeed
 from bisos.basics import pathPlus
 
 def sysdUnitFileFunc() -> str | None:
-    """Produce the unit file as a string. execPath can be different for testing vs stationable."""
+    """Produce the unit file as a string. execPath can be different for testing vs stationable.
+In situations where there is #! /bin/env python, just using execPath wont work, hence pyExecPath
+    """
 
     if ( execPath := pathPlus.whichBinPath("facter-roPerf.cs",)
     ) is None: return None
+
+    if ( pythonPath := pathPlus.whichBinPath("python",)
+    ) is None: return None
+
+    pyExecPath = f"{pythonPath} {execPath}"
 
     templateStr = f"""
 [Unit]
@@ -28,7 +35,7 @@ Description=Facter Service
 Documentation=man:facter(1)
 
 [Service]
-ExecStart={execPath} -v 20 --svcName="svcFacter" -i csPerformer
+ExecStart={pyExecPath} -v 20 --svcName="svcFacter" -i csPerformer
 Restart=always
 RestartSec=60
 
@@ -42,5 +49,3 @@ systemdSeed.setup(
     sysdUnitName="facter",
     sysdUnitFileFunc=sysdUnitFileFunc,
 )
-
-# systemdSeed.plantWithWhich("seedSystemd.cs")
