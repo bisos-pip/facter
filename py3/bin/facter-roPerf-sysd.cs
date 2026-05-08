@@ -13,7 +13,7 @@
 * Overview and Relevant Pointers
 #+end_org """
 
-from bisos.debian import systemdSeed
+from bisos.debian import systemd_seedInfo
 from bisos.basics import pathPlus
 
 def sysdUnitFileFunc() -> str | None:
@@ -44,7 +44,7 @@ WantedBy=default.target
 """
     return templateStr
 
-systemdSeed.setup(
+systemd_seedInfo.setup(
     seedType="sysdSysUnit",  # or sysdUserUnit
     sysdUnitName="facter",
     sysdUnitFileFunc=sysdUnitFileFunc,
